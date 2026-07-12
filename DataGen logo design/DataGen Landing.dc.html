@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:#0A1524; }
+  ::selection { background:#22D3EE; color:#0A1524; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(18px); } to { opacity:1; transform: translateY(0); } }
+  .dg-reveal { opacity:1; }
+  .dg-reveal.dg-in { animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
+</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif; background:#0A1524; color:#EAF1F6; min-height:100vh; overflow-x:hidden;">
+
+  <!-- ================= NAV ================= -->
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px 48px; background:{{ navBg }}; backdrop-filter:blur(14px); border-bottom:1px solid {{ navBorder }}; transition:background 0.25s, border-color 0.25s;">
+    <div style="display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="{{ scrollToTop }}">
+      <span style="color:#EAF1F6; display:inline-flex;">
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect x="3" y="9" width="9" height="9" rx="1.5" fill="currentColor"/>
+          <rect x="3" y="30" width="9" height="9" rx="1.5" fill="currentColor"/>
+          <path d="M12 13.5 L15.5 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M12 34.5 L15.5 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="18" y="18" width="12" height="12" rx="2" transform="rotate(45 24 24)" stroke="currentColor" stroke-width="2.4" fill="none"/>
+          <path d="M32.5 24 L36 24" stroke="#22D3EE" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="36" y="19.5" width="9" height="9" rx="1.5" fill="#22D3EE"/>
+        </svg>
+      </span>
+      <span style="font-weight:700; font-size:17px; letter-spacing:-0.01em;">Data<span style="color:#22D3EE; font-weight:400;">Gen</span></span>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:36px;" data-desktop-nav="true">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+        <a href="{{ item.href }}" style="color:{{ item.color }}; text-decoration:none; font-size:14px; font-weight:500; transition:color 0.2s;" style-hover="color:#22D3EE;">{{ item.label }}</a>
+      </sc-for>
+    </div>
+
+    <a href="DataGen Demo.dc.html" style="display:flex; align-items:center; gap:8px; background:#22D3EE; color:#06222A; padding:10px 20px; border-radius:7px; font-weight:600; font-size:14px; text-decoration:none; transition:transform 0.15s, background 0.15s;" style-hover="background:#5EEAF5; transform:translateY(-1px);">
+      Get Started
+    </a>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <section style="position:relative; padding:200px 48px 140px; max-width:1180px; margin:0 auto; display:flex; flex-direction:column; align-items:flex-start;">
+
+    <!-- watermark icon -->
+    <div style="position:absolute; right:-40px; top:120px; opacity:0.06; pointer-events:none;">
+      <svg width="440" height="440" viewBox="0 0 48 48" fill="none">
+        <rect x="3" y="9" width="9" height="9" rx="1.5" fill="#EAF1F6"/>
+        <rect x="3" y="30" width="9" height="9" rx="1.5" fill="#EAF1F6"/>
+        <path d="M12 13.5 L15.5 24" stroke="#EAF1F6" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M12 34.5 L15.5 24" stroke="#EAF1F6" stroke-width="1.6" stroke-linecap="round"/>
+        <rect x="18" y="18" width="12" height="12" rx="2" transform="rotate(45 24 24)" stroke="#EAF1F6" stroke-width="1.6" fill="none"/>
+        <path d="M32.5 24 L36 24" stroke="#EAF1F6" stroke-width="1.6" stroke-linecap="round"/>
+        <rect x="36" y="19.5" width="9" height="9" rx="1.5" fill="#EAF1F6"/>
+      </svg>
+    </div>
+
+    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(34,211,238,0.08); border:1px solid rgba(34,211,238,0.28); color:#5EEAF5; padding:7px 14px; border-radius:20px; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.04em; margin-bottom:28px;">
+      <span style="width:7px; height:7px; border-radius:50%; background:#22D3EE; display:inline-block; box-shadow:0 0 8px #22D3EE;"></span>
+      Open source · MIT licensed
+    </div>
+
+    <h1 style="font-size:76px; font-weight:700; line-height:1.02; letter-spacing:-0.03em; margin:0 0 28px; max-width:900px;">
+      Talk to your database.<br/>Get<span style="color:#22D3EE; font-weight:400;">&nbsp;real answers.</span>
+    </h1>
+
+    <p style="font-size:19px; line-height:1.6; color:#9FB0C0; max-width:620px; margin:0 0 44px;">
+      DataGen is an LLM-powered agent that answers natural-language questions about any SQLite or PostgreSQL database — it writes the SQL, runs sandboxed analysis, and replies in plain text.
+    </p>
+
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:76px;">
+      <a href="DataGen Demo.dc.html" style="background:#22D3EE; color:#06222A; padding:14px 28px; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none; transition:transform 0.15s, background 0.15s;" style-hover="background:#5EEAF5; transform:translateY(-2px);">Try the live demo →</a>
+      <a href="#stack" style="background:transparent; color:#EAF1F6; border:1px solid #223247; padding:14px 28px; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none; transition:border-color 0.15s, color 0.15s;" style-hover="border-color:#22D3EE; color:#22D3EE;">View the stack</a>
+    </div>
+
+    <div style="display:flex; gap:64px; border-top:1px solid #182535; padding-top:32px; width:100%; max-width:640px;">
+      <div>
+        <div style="font-size:32px; font-weight:700; color:#22D3EE;">85.7<span style="font-size:20px;">%</span></div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; color:#6E8095; margin-top:4px;">Eval accuracy (38 cases)</div>
+      </div>
+      <div>
+        <div style="font-size:32px; font-weight:700; color:#22D3EE;">4</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; color:#6E8095; margin-top:4px;">Agent tools</div>
+      </div>
+      <div>
+        <div style="font-size:32px; font-weight:700; color:#22D3EE;">3</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; color:#6E8095; margin-top:4px;">Guardrail tiers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OVERVIEW / PROFILE ================= -->
+  <section id="platform" data-screen-label="Platform" style="padding:120px 48px; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.3fr 0.9fr; gap:80px; border-top:1px solid #131F2E;">
+    <div ref="{{ setRef('platform') }}" class="dg-reveal {{ inView.platform ? 'dg-in' : '' }}">
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#22D3EE; margin-bottom:18px;">Platform</div>
+      <h2 style="font-size:42px; font-weight:700; letter-spacing:-0.02em; margin:0 0 28px; line-height:1.15;">An agent that queries your data like a teammate would.</h2>
+      <p style="font-size:17px; line-height:1.75; color:#9FB0C0; margin:0 0 20px;">
+        Point DataGen at any <strong style="color:#EAF1F6;">SQLite database or PostgreSQL / Supabase</strong> connection — no schema config required. On connect it auto-profiles every table and folds row counts, null rates, and semantic types straight into its own system prompt.
+      </p>
+      <p style="font-size:17px; line-height:1.75; color:#9FB0C0; margin:0 0 20px;">
+        Ask a question in plain language and the agent <strong style="color:#EAF1F6;">generates SQL, executes it, self-corrects on errors</strong>, and can drop into a sandboxed pandas environment for correlation, anomaly detection, and distribution stats — with Tavily web search for context the database doesn't have.
+      </p>
+      <p style="font-size:17px; line-height:1.75; color:#9FB0C0; margin:0;">
+        What matters isn't the chat window. It's the <strong style="color:#EAF1F6;">trust boundary</strong>: every row, web result, and upload is tagged untrusted before it reaches the model, and the write path never lets the LLM emit SQL.
+      </p>
+    </div>
+
+    <div ref="{{ setRef('snapshot') }}" class="dg-reveal {{ inView.snapshot ? 'dg-in' : '' }}" style="background:#0F1D2E; border:1px solid #1B2A3D; border-radius:14px; padding:36px; align-self:start;">
+      <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6E8095; margin-bottom:24px;">Snapshot</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <div style="font-size:12px; color:#6E8095; margin-bottom:6px;">Databases</div>
+          <div style="font-size:22px; font-weight:700;">SQLite · Postgres</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:#6E8095; margin-bottom:6px;">Interfaces</div>
+          <div style="font-size:22px; font-weight:700;">CLI · Web · Telegram</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:#6E8095; margin-bottom:6px;">Eval cases</div>
+          <div style="font-size:22px; font-weight:700;">38</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:#6E8095; margin-bottom:6px;">License</div>
+          <div style="font-size:22px; font-weight:700;">MIT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT IT DOES ================= -->
+  <section id="pipelines" data-screen-label="Pipelines" style="padding:120px 48px; max-width:1180px; margin:0 auto; border-top:1px solid #131F2E;">
+    <div style="margin-bottom:56px;">
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#22D3EE; margin-bottom:18px;">What it handles</div>
+      <h2 style="font-size:42px; font-weight:700; letter-spacing:-0.02em; margin:0; line-height:1.15;">One agent, five jobs.</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+      <sc-for list="{{ workItems }}" as="w" hint-placeholder-count="5">
+        <div ref="{{ setRef(w.id) }}" class="dg-reveal {{ inView[w.id] ? 'dg-in' : '' }}" style="background:#0F1D2E; border:1px solid #1B2A3D; border-radius:14px; padding:30px; transition:border-color 0.2s, transform 0.2s;" style-hover="border-color:#22D3EE; transform:translateY(-4px);">
+          <div style="width:42px; height:42px; border-radius:9px; background:rgba(34,211,238,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:22px; color:#22D3EE;" dangerously-set-inner-html="{{ w.icon }}"></div>
+          <div style="font-size:18px; font-weight:600; margin-bottom:8px;">{{ w.title }}</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:#6E8095; margin-bottom:18px;">{{ w.category }}</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{ w.tags }}" as="tag" hint-placeholder-count="3">
+              <span style="font-size:11px; font-family:'Space Mono',monospace; background:#152438; color:#9FB0C0; padding:5px 10px; border-radius:5px;">{{ tag }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= STACK MARQUEE ================= -->
+  <section id="stack" data-screen-label="Integrations" style="padding:100px 0; border-top:1px solid #131F2E; overflow:hidden;">
+    <div style="max-width:1180px; margin:0 auto; padding:0 48px 56px;">
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#22D3EE; margin-bottom:18px;">Integrations</div>
+      <h2 style="font-size:42px; font-weight:700; letter-spacing:-0.02em; margin:0; line-height:1.15;">Runs on the stack you already trust.</h2>
+    </div>
+    <div style="display:flex; width:max-content; animation:marquee 32s linear infinite;">
+      <sc-for list="{{ stackDouble }}" as="tool" hint-placeholder-count="20">
+        <span style="font-family:'Space Mono',monospace; font-size:20px; color:#3C4E63; padding:0 36px; white-space:nowrap; border-right:1px solid #182535; display:flex; align-items:center;">{{ tool }}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= CAPABILITIES ================= -->
+  <section id="capabilities" data-screen-label="Capabilities" style="padding:120px 48px; max-width:1180px; margin:0 auto; border-top:1px solid #131F2E;">
+    <div style="margin-bottom:56px;">
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#22D3EE; margin-bottom:18px;">Capabilities</div>
+      <h2 style="font-size:42px; font-weight:700; letter-spacing:-0.02em; margin:0; line-height:1.15;">Beyond a chat box over SQL.</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:#1B2A3D; border:1px solid #1B2A3D; border-radius:14px; overflow:hidden;">
+      <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="6">
+        <div ref="{{ setRef(c.id) }}" class="dg-reveal {{ inView[c.id] ? 'dg-in' : '' }}" style="background:#0F1D2E; padding:32px; transition:background 0.2s;" style-hover="background:#132539;">
+          <div style="font-size:17px; font-weight:600; margin-bottom:10px; color:#EAF1F6;">{{ c.title }}</div>
+          <div style="font-size:14px; line-height:1.65; color:#8497AB;">{{ c.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" data-screen-label="Contact" style="padding:140px 48px 100px; max-width:1180px; margin:0 auto; border-top:1px solid #131F2E; text-align:center;">
+    <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#22D3EE; margin-bottom:22px;">Contact</div>
+    <h2 style="font-size:48px; font-weight:700; letter-spacing:-0.02em; margin:0 0 20px; line-height:1.1;">Point it at a database. Ask a question.</h2>
+    <p style="font-size:17px; color:#9FB0C0; max-width:520px; margin:0 auto 48px;">Open source and MIT licensed — try the hosted demo or clone the repo and bring your own database.</p>
+
+    <div style="display:flex; justify-content:center; gap:16px; margin-bottom:64px; flex-wrap:wrap;">
+      <a href="DataGen Demo.dc.html" style="background:#22D3EE; color:#06222A; padding:14px 30px; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none; transition:transform 0.15s;" style-hover="transform:translateY(-2px);">Try the live demo →</a>
+      <a href="https://github.com/juan-elf/Database-AI-agent" target="_blank" style="background:transparent; color:#EAF1F6; border:1px solid #223247; padding:14px 30px; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none; transition:border-color 0.15s;" style-hover="border-color:#22D3EE; color:#22D3EE;">Read the docs</a>
+    </div>
+
+    <div style="display:flex; justify-content:center; gap:36px; flex-wrap:wrap; font-size:14px;">
+      <sc-for list="{{ contactLinks }}" as="link" hint-placeholder-count="4">
+        <a href="{{ link.href }}" style="color:#8497AB; text-decoration:none; transition:color 0.2s;" style-hover="color:#22D3EE;">{{ link.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #131F2E; padding:32px 48px; text-align:center; font-family:'Space Mono',monospace; font-size:12px; color:#4A5B6E;">
+    &copy; 2026 DataGen. All rights reserved.
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    scrolled: false,
+    activeSection: '',
+    inView: {}
+  };
+
+  navItems = [
+    { label: 'Platform', href: '#platform' },
+    { label: 'Pipelines', href: '#pipelines' },
+    { label: 'Integrations', href: '#stack' },
+    { label: 'Capabilities', href: '#capabilities' },
+    { label: 'Contact', href: '#contact' }
+  ];
+
+  workItems = [
+    {
+      id: 'ingest',
+      title: 'Natural Language → SQL',
+      category: 'Query · Self-correcting',
+      tags: ['SQLite', 'Postgres', 'Auto-retry'],
+      icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+    },
+    {
+      id: 'transform',
+      title: 'Sandboxed Analysis',
+      category: 'pandas · run_analysis tool',
+      tags: ['Correlation', 'Anomaly detection', 'No filesystem access'],
+      icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4l8 8-8 8M12 20h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    },
+    {
+      id: 'serve',
+      title: 'Insight Reports',
+      category: 'Autonomous analyst pipeline',
+      tags: ['Self-planned questions', 'Narrative output', 'Downloadable'],
+      icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><path d="M11 7.5h6M7.5 11v6" stroke="currentColor" stroke-width="2"/></svg>'
+    },
+    {
+      id: 'observe',
+      title: 'Data Classification',
+      category: 'Router · Confidence scored',
+      tags: ['CSV upload', 'Column mapping', 'Safe append'],
+      icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 17l5-6 4 4 5-8 4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    },
+    {
+      id: 'access',
+      title: 'AI Guardrails',
+      category: 'Trust boundary · 3 tiers',
+      tags: ['Untrusted-data tagging', 'Injection blocking', 'Output checks'],
+      icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>'
+    }
+  ];
+
+  stackTools = ['Python', 'OpenRouter', 'SQLite', 'PostgreSQL', 'Supabase', 'Streamlit', 'Telegram Bot API', 'Tavily', 'pandas', 'rich'];
+
+  capabilities = [
+    { id: 'cap1', title: 'Auto Data Profiling', desc: 'On connect, every table is profiled — row counts, null %, cardinality, min/max — and injected into the system prompt.' },
+    { id: 'cap2', title: 'Sandboxed pandas Analysis', desc: 'The run_analysis tool executes Python on query results in a restricted namespace — no filesystem, network, or subprocess access.' },
+    { id: 'cap3', title: 'Autonomous Insight Report', desc: 'One click: the agent plans its own analytical questions, runs SQL, detects anomalies, and writes a full narrative report.' },
+    { id: 'cap4', title: 'Data Classification & Safe Write', desc: 'Upload a CSV, get a confidence-scored table match and column mapping — writes are transactional and audit-logged, never LLM-generated SQL.' },
+    { id: 'cap5', title: 'AI Guardrails', desc: 'Every DB row, web result, and upload is tagged untrusted before reaching the LLM; jailbreak patterns are blocked pre-model.' },
+    { id: 'cap6', title: 'Telegram Bot', desc: 'The same agent, reachable over Telegram — per-user sessions, /report for Insight Reports, CSV upload support.' }
+  ];
+
+  contactLinks = [
+    { label: 'GitHub', href: 'https://github.com/juan-elf/Database-AI-agent' },
+    { label: 'Live Demo', href: 'https://datagen-ai.streamlit.app' },
+    { label: 'Domain Packs', href: '#' },
+    { label: 'Eval Harness', href: '#' }
+  ];
+
+  refs = {};
+  observer = null;
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll);
+    this.onScroll();
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('data-reveal-id');
+          if (id) {
+            this.setState((s) => ({ inView: { ...s.inView, [id]: true } }));
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+    Object.keys(this.refs).forEach((k) => {
+      if (this.refs[k]) this.observer.observe(this.refs[k]);
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.observer) this.observer.disconnect();
+  }
+
+  onScroll = () => {
+    const scrolled = window.scrollY > 24;
+    if (scrolled !== this.state.scrolled) this.setState({ scrolled });
+  };
+
+  setRef = (id) => (el) => {
+    if (el) {
+      el.setAttribute('data-reveal-id', id);
+      this.refs[id] = el;
+      if (this.observer) this.observer.observe(el);
+    }
+  };
+
+  scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  renderVals() {
+    const scrolled = this.state.scrolled;
+    return {
+      navBg: scrolled ? 'rgba(10,21,36,0.85)' : 'rgba(10,21,36,0)',
+      navBorder: scrolled ? '#182535' : 'transparent',
+      navItems: this.navItems.map((n) => ({ ...n, color: '#C7D3DD' })),
+      workItems: this.workItems,
+      stackDouble: [...this.stackTools, ...this.stackTools],
+      capabilities: this.capabilities,
+      contactLinks: this.contactLinks,
+      inView: this.state.inView,
+      setRef: this.setRef,
+      scrollToTop: this.scrollToTop
+    };
+  }
+}
+</script>
+</body>
+</html>

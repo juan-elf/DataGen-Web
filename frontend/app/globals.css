@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Design tokens from "DataGen logo design" (Landing + Demo .dc.html mockups) */
+@theme {
+  --color-navy: #0a1524;
+  --color-panel: #08111d;
+  --color-card: #0f1d2e;
+  --color-card-hover: #132539;
+  --color-edge: #131f2e;
+  --color-edge2: #1b2a3d;
+  --color-edge3: #223247;
+  --color-divider: #182535;
+  --color-ink: #eaf1f6;
+  --color-soft: #c7d3dd;
+  --color-muted: #9fb0c0;
+  --color-dim: #6e8095;
+  --color-faint: #4a5b6e;
+  --color-ghost: #3c4e63;
+  --color-accent: #22d3ee;
+  --color-accent2: #5eeaf5;
+  --color-accent-ink: #06222a;
+}
+
+@theme inline {
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-space-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-navy);
+  color: var(--color-ink);
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+::selection {
+  background: #22d3ee;
+  color: #0a1524;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #1b2a3d;
+  border-radius: 4px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dg-in {
+  animation: fadeUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dg-bubble {
+  animation: bubbleIn 0.35s ease;
+}

@@ -1,0 +1,20 @@
+name: Keep-alive + workspace TTL sweep
+
+on:
+  schedule:
+    # every 10 minutes — keeps a Render free-tier backend from sleeping and
+    # keeps the Supabase free-tier project from pausing after a week idle
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health/db
+        run: curl -fsS "${{ secrets.BACKEND_URL }}/health/db"
+
+      - name: Trigger workspace cleanup sweep
+        run: |
+          curl -fsS -X POST "${{ secrets.BACKEND_URL }}/admin/cleanup" \
+            -H "Authorization: Bearer ${{ secrets.CLEANUP_TOKEN }}"
