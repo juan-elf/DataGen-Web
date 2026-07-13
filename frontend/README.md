@@ -3,7 +3,7 @@ for the full architecture; this is just the frontend piece.
 
 ```powershell
 npm install
-copy .env.example .env.local   # NEXT_PUBLIC_API_URL -> your backend
+copy .env.example .env.local   # NEXT_PUBLIC_API_URL 
 npm run dev
 ```
 

@@ -8,6 +8,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 
+from api.chat import evict_agent
 from core.context import WorkspaceContext, use_context
 from core.profiler import profile_database, format_profile_for_prompt, invalidate_profile_cache
 from core.ratelimit import RateLimitExceeded, check_rate_limit
@@ -57,6 +58,10 @@ def upload(
 
         invalidate_profile_cache(ctx.schema)
         profile_text = format_profile_for_prompt(profile_database(force=True))
+
+    # The workspace's cached chat agent baked the old (possibly empty) schema
+    # into its system prompt — drop it so the next question sees this upload.
+    evict_agent(ctx.workspace_id)
 
     return {
         "success": True,

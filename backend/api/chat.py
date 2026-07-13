@@ -47,6 +47,16 @@ def _get_or_create_agent(ctx: WorkspaceContext, domain: Optional[str]) -> Agent:
         return agent
 
 
+def evict_agent(workspace_id: str) -> None:
+    """Drop a workspace's cached agent so the next /chat rebuilds its system
+    prompt with the current schema. Called after an upload changes the tables —
+    the agent bakes the schema into its system prompt at construction time, so a
+    stale cached agent would otherwise keep answering as if the new data
+    didn't exist."""
+    with _agents_lock:
+        _agents.pop(workspace_id, None)
+
+
 @router.post("/chat")
 def chat(body: ChatRequest, ctx: WorkspaceContext = Depends(get_workspace)):
     if not body.message.strip():

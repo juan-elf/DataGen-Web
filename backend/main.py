@@ -9,12 +9,13 @@ core/context.py and db/context.py for how that isolation works.
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
 from api import admin, analysis, chat, health, report, upload  # noqa: E402
+from db.context import WORKSPACE_HEADER  # noqa: E402
 from db.registry import ensure_registry_table  # noqa: E402
 
 app = FastAPI(title="DataGen Web Backend", version="0.1.0")
@@ -28,7 +29,25 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # Browsers can only read a custom response header if it's whitelisted here.
+    # This is how the frontend receives the workspace id to persist in localStorage.
+    expose_headers=[WORKSPACE_HEADER],
 )
+
+
+@app.middleware("http")
+async def attach_workspace_header(request: Request, call_next):
+    """Copy the token stashed by get_workspace() onto the response header.
+
+    Done in middleware (not in get_workspace itself) because headers set on the
+    dependency-injected Response are dropped when an endpoint returns its own
+    Response — which the SSE endpoints (/chat, /report) do.
+    """
+    response = await call_next(request)
+    token = getattr(request.state, "workspace_token", None)
+    if token:
+        response.headers[WORKSPACE_HEADER] = token
+    return response
 
 
 @app.on_event("startup")

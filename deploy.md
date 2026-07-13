@@ -68,6 +68,7 @@ commit file berisi API key/password.
 7. Catat URL-nya, mis. `https://datagen-backend.onrender.com`.
 8. **Tes:** buka `https://<backend-url>/health/db` → harus `{"status":"ok","db":"reachable"}`.
 
+https://datagen-web.onrender.com/
 ---
 
 ## Tahap 2 — Deploy Frontend ke Vercel
@@ -84,7 +85,7 @@ commit file berisi API key/password.
    | `NEXT_PUBLIC_API_URL` | `https://datagen-backend.onrender.com` (URL dari Tahap 1, **tanpa** trailing slash) |
 
 5. **Deploy** → tunggu (~2 menit) → catat URL, mis. `https://datagen-web.vercel.app`.
-
+https://data-gen-web.vercel.app/
 ---
 
 ## Tahap 3 — Hubungkan CORS Backend ke Frontend

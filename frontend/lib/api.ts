@@ -2,6 +2,32 @@ import { consumeSSE } from "./sse";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
+// ── Workspace identity ──────────────────────────────────────────────────────
+// The backend and frontend live on different domains (Render vs Vercel), so a
+// cookie can't carry workspace identity cross-site. Instead the backend hands
+// back a signed token in the `X-Workspace-Id` response header; we persist it in
+// localStorage (first-party — unaffected by third-party cookie blocking) and
+// echo it on every request. See backend/db/context.py.
+const WORKSPACE_KEY = "datagen_workspace_id";
+const WORKSPACE_HEADER = "X-Workspace-Id";
+
+function loadWorkspaceId(): string | null {
+  if (typeof window === "undefined") return null;
+  return window.localStorage.getItem(WORKSPACE_KEY);
+}
+
+function captureWorkspaceId(response: Response): void {
+  if (typeof window === "undefined") return;
+  const id = response.headers.get(WORKSPACE_HEADER);
+  if (id) window.localStorage.setItem(WORKSPACE_KEY, id);
+}
+
+/** Merge the stored workspace token into a request's headers, if we have one. */
+function withWorkspace(extra: Record<string, string> = {}): Record<string, string> {
+  const id = loadWorkspaceId();
+  return id ? { ...extra, [WORKSPACE_HEADER]: id } : extra;
+}
+
 async function parseErrorDetail(response: Response): Promise<string> {
   try {
     const body = await response.json();
@@ -35,8 +61,10 @@ export async function uploadFile(
   const response = await fetch(`${API_URL}/upload`, {
     method: "POST",
     credentials: "include",
+    headers: withWorkspace(),
     body: form,
   });
+  captureWorkspaceId(response);
 
   if (!response.ok) {
     throw new Error(await parseErrorDetail(response));
@@ -62,9 +90,10 @@ export async function sendChatMessage(
   const response = await fetch(`${API_URL}/chat`, {
     method: "POST",
     credentials: "include",
-    headers: { "Content-Type": "application/json" },
+    headers: withWorkspace({ "Content-Type": "application/json" }),
     body: JSON.stringify({ message, domain }),
   });
+  captureWorkspaceId(response);
 
   if (!response.ok) {
     onEvent({ type: "error", content: await parseErrorDetail(response) });
@@ -74,7 +103,12 @@ export async function sendChatMessage(
 }
 
 export async function resetChat(): Promise<void> {
-  await fetch(`${API_URL}/chat/reset`, { method: "POST", credentials: "include" });
+  const response = await fetch(`${API_URL}/chat/reset`, {
+    method: "POST",
+    credentials: "include",
+    headers: withWorkspace(),
+  });
+  captureWorkspaceId(response);
 }
 
 // ── Insight Report ────────────────────────────────────────────────────────────
@@ -108,7 +142,9 @@ export async function generateReport(onEvent: (event: ReportEvent) => void): Pro
   const response = await fetch(`${API_URL}/report`, {
     method: "POST",
     credentials: "include",
+    headers: withWorkspace(),
   });
+  captureWorkspaceId(response);
 
   if (!response.ok) {
     onEvent({ type: "error", content: await parseErrorDetail(response) });
@@ -132,9 +168,10 @@ export async function runAnalysis(sql: string, code: string): Promise<AnalysisRe
   const response = await fetch(`${API_URL}/analysis`, {
     method: "POST",
     credentials: "include",
-    headers: { "Content-Type": "application/json" },
+    headers: withWorkspace({ "Content-Type": "application/json" }),
     body: JSON.stringify({ sql, code }),
   });
+  captureWorkspaceId(response);
 
   if (!response.ok) {
     throw new Error(await parseErrorDetail(response));
