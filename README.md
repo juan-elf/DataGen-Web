@@ -1,8 +1,16 @@
-# DataGen Web
+<p align="center">
+  <img src="assets/datagen-logo-dark.png" alt="DataGen" width="300">
+</p>
 
-Production web version of **DataGen** — upload a CSV/Excel file, get an autonomous
-data analyst: auto-profiling, natural-language chat over your data, and a
-one-click AI-written insight report.
+<p align="center">
+  <b>Talk to your data. Get real answers.</b><br>
+  Upload a CSV/Excel file and get an autonomous data analyst: auto-profiling,
+  natural-language chat over your data, and a one-click AI-written insight report.
+</p>
+
+<p align="center">
+  <img src="assets/Landingpage.png" alt="DataGen landing page" width="100%">
+</p>
 
 Architecture, phased implementation plan, and free-tier hosting strategy are
 specified in [`DataGenWeb.md`](DataGenWeb.md). This is a from-scratch web
@@ -10,6 +18,9 @@ implementation in its own repo — it reuses the **engine** (agent loop, SQL
 tools, guardrails, profiler, insight-report pipeline) from the CLI project
 ([`universal-sql-agent`](https://github.com/juan-elf/Database-AI-agent)), not
 its UI (Streamlit isn't Vercel-compatible).
+
+**Status:** live on Vercel (frontend) + Render (backend) + Supabase (Postgres),
+all free-tier. Google OAuth login is a planned next step.
 
 ```
 ┌─────────────────────┐     HTTPS / SSE      ┌──────────────────────┐
@@ -26,12 +37,19 @@ its UI (Streamlit isn't Vercel-compatible).
                                               └────────────────────┘
 ```
 
+The chat workspace — sidebar with session history, and a composer that streams
+the agent's SQL and answers live:
+
+<p align="center">
+  <img src="assets/Chat.png" alt="DataGen chat workspace" width="100%">
+</p>
+
 ## Repo layout
 
 ```
 DataGen/
 ├── DataGenWeb.md         # full spec: architecture, phases, free-tier hosting
-├── backend/               # FastAPI — see backend/README below
+├── backend/               # FastAPI (Render)
 │   ├── core/              # DataGen engine, ported to be workspace-scoped
 │   │   ├── context.py      # WorkspaceContext + contextvar plumbing (the P1 isolation layer)
 │   │   ├── database.py     # Postgres, schema-per-workspace (was SQLite/global DATABASE_URL)
@@ -49,15 +67,28 @@ DataGen/
 │   │   ├── schema_infer.py  # column/table name sanitization, type inference
 │   │   └── ingest.py        # DataFrame → `<workspace_schema>.<table>` via SQLAlchemy
 │   ├── db/                 # workspace identity + lifecycle (new — web-only concern)
-│   │   ├── context.py       # get_workspace() — cookie-based anonymous identity
+│   │   ├── context.py       # get_workspace() — anonymous identity via signed X-Workspace-Id token
 │   │   ├── registry.py      # public.datagen_workspaces — tracks every workspace schema
 │   │   └── cleanup.py       # TTL sweep — drops idle workspace schemas
+│   ├── auth/               # (empty) — reserved for Supabase JWT verification (planned)
 │   ├── api/                 # FastAPI routes
 │   │   ├── health.py, upload.py, chat.py, report.py, analysis.py, admin.py
 │   ├── domains/             # domain packs (battery.md, ecommerce.md — from DataGen)
 │   ├── tests/               # DB-free unit tests (guardrails, ingest, context, ratelimit)
 │   ├── main.py, requirements.txt, Dockerfile, .env.example
 ├── frontend/               # Next.js App Router (Vercel)
+│   ├── app/
+│   │   ├── page.tsx          # landing page (design-system marketing page)
+│   │   └── (app)/            # authed-app shell: sidebar + session history
+│   │       ├── layout.tsx     # sidebar (nav rail, session list, new-chat)
+│   │       ├── chat/          # chat UI (SSE), tool activity, SQL blocks
+│   │       ├── report/        # insight report (SSE progress + markdown)
+│   │       └── upload/        # CSV/Excel upload
+│   ├── lib/
+│   │   ├── api.ts             # typed client for the backend REST + SSE endpoints
+│   │   ├── sse.ts             # hand-rolled SSE frame parser (fetch + ReadableStream)
+│   │   └── sessions.tsx       # chat session history store (localStorage, useSyncExternalStore)
+│   └── components/            # Logo, Reveal (scroll-reveal)
 └── .github/workflows/      # backend tests CI + keep-alive/TTL-sweep cron
 ```
 
@@ -81,9 +112,29 @@ thread between `yield`s. Both `api/chat.py` and `api/report.py` sidestep this
 by running the whole streaming pipeline on one dedicated thread they spawn
 themselves, communicating to the HTTP response via a `queue.Queue`.
 
-Workspace identity for the MVP is an anonymous, signed cookie (no login) —
-see `db/context.py`'s docstring for how to swap in Supabase Auth later without
-touching anything downstream.
+## Workspace identity (anonymous, cross-site-safe)
+
+Each visitor gets an anonymous workspace — no login. Identity is a **signed
+token** the backend issues in the `X-Workspace-Id` response header; the frontend
+persists it in `localStorage` and echoes it on every request. Continuing across
+requests keeps you in the same `workspace_<id>` schema, so your uploaded tables
+are still there.
+
+Why a header and not a cookie: the frontend (Vercel) and backend (Render) live
+on **different registrable domains**, so every browser `fetch` is *cross-site*.
+A `SameSite=Lax` cookie is never sent on cross-site fetches (in **any** browser,
+not just Safari), and a `SameSite=None` third-party cookie is blocked outright
+by Safari's ITP — so a cookie can't carry identity here. A header set from
+first-party `localStorage` sidesteps all of that and works everywhere. (A cookie
+is still set as a bonus, so a future same-site custom-domain deployment keeps
+working unchanged.) See `db/context.py`'s docstring for the full rationale and
+for how to swap in Supabase Auth later (a planned next step) without touching
+anything downstream.
+
+Chat **session history** lives entirely client-side (`lib/sessions.tsx`,
+localStorage) — consistent with the browser-local identity model, and requires
+no backend/DB changes. Each session is a saved transcript; the backend keeps
+the live conversation context only for the currently active session.
 
 ## Getting started
 
@@ -139,16 +190,23 @@ Opens at http://localhost:3000.
 
 ## Deploying
 
-- **Frontend → Vercel**: `vercel link`, set `NEXT_PUBLIC_API_URL` to the
-  deployed backend URL, `vercel deploy --prod`. (Vercel CLI isn't installed
-  in this dev environment — install with `npm i -g vercel` to use
-  `vercel env pull` / `vercel deploy` / `vercel logs` directly.)
-- **Backend → Fly.io / Render / HF Spaces**: build `backend/Dockerfile`.
+Deployed as Vercel (frontend) + Render (backend) + Supabase (Postgres), all
+free-tier:
+
+- **Frontend → Vercel**: import the repo with root directory `frontend`, set
+  `NEXT_PUBLIC_API_URL` to the deployed backend URL.
+- **Backend → Render** (or Fly.io / HF Spaces): build `backend/Dockerfile`.
   Render's free tier sleeps after 15 min idle — `.github/workflows/keepalive.yml`
   pings `/health/db` and triggers `/admin/cleanup` every 10 minutes to prevent
   that and to stop the Supabase free-tier project from pausing after a week
   idle. Set the `BACKEND_URL` and `CLEANUP_TOKEN` repo secrets for it to work.
-- **Database → Supabase**: nothing to deploy, just keep it warm (see above).
+- **Database → Supabase**: nothing to deploy, just keep it warm (see above). Use
+  the **Session pooler** connection string (IPv4, port 5432) — not Direct
+  (IPv6-only) or the Transaction pooler (breaks per-request `SET search_path`).
+- **CORS/cookies note**: set `FRONTEND_ORIGIN` on the backend to the exact
+  Vercel origin, and `COOKIE_SECURE=true` in production (`false` only for local
+  HTTP). Cross-site identity rides the `X-Workspace-Id` header, not a cookie
+  (see "Workspace identity" above).
 
 ## Testing
 
@@ -165,14 +223,15 @@ Postgres connection; exercise those manually against a Supabase dev project
 
 ## What's implemented vs. deferred
 
-Matches phases P0–P3 of [`DataGenWeb.md`](DataGenWeb.md) fully, P4 (frontend)
-with a functional-but-undesigned UI (you have your own design to apply), and
-P5 partially:
+Phases P0–P4 of [`DataGenWeb.md`](DataGenWeb.md) are done and deployed; P5 is
+partially in place (rate limiting, TTL, keep-alive; auth is the remaining piece).
 
 | Done | Deferred |
 |---|---|
-| Schema-per-workspace isolation (P1) | Full Supabase Auth (workspace is anonymous-cookie only) |
+| Schema-per-workspace isolation (P1) | Google OAuth login via Supabase Auth — planned (workspace is anonymous-only today) |
 | CSV/Excel ingest → Postgres (P2) | CSV formula-injection sanitization on **export** (no export feature yet) |
 | `/chat`, `/report`, `/analysis` SSE endpoints reusing the DataGen engine (P3) | PDF report export (markdown only) |
+| Designed frontend + chat session history (localStorage) | Server-side chat history (sync across devices — pairs with auth) |
+| Cross-site-safe workspace identity (header + localStorage) | — |
 | Rate limiting (in-memory, per-workspace) | Redis-backed rate limiting (only needed if scaled to >1 backend instance) |
 | Workspace TTL sweep + keep-alive cron | Dashboard for viewing/managing your own workspace's tables directly |

@@ -5,12 +5,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { LogoMark } from "@/components/Logo";
 import { sendChatMessage, type ChatEvent } from "@/lib/api";
-
-interface Message {
-  role: "user" | "assistant" | "system";
-  text: string;
-  sql?: string;
-}
+import { useSessions, type StoredMessage as Message } from "@/lib/sessions";
 
 const CATEGORIES = ["Trending", "Schema", "Aggregations", "Anomalies", "Time-series", "Web context"];
 
@@ -89,7 +84,8 @@ function Composer({
 }
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const { activeId, activeMessages, updateSessionMessages } = useSessions();
+  const messages = activeMessages;
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
@@ -98,20 +94,20 @@ export default function ChatPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const clear = () => setMessages([]);
-    window.addEventListener("datagen:new-chat", clear);
-    return () => window.removeEventListener("datagen:new-chat", clear);
-  }, []);
-
-  useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
   }, [messages, activeTool]);
 
   async function send() {
     const q = input.trim();
-    if (!q || busy) return;
+    if (!q || busy || !activeId) return;
 
-    setMessages((prev) => [...prev, { role: "user", text: q }]);
+    // Capture the session at send time so streamed tokens always land in the
+    // originating session even if the user switches sessions mid-stream.
+    const sid = activeId;
+    const append = (m: Message) =>
+      updateSessionMessages(sid, (prev) => [...prev, m]);
+
+    append({ role: "user", text: q });
     setInput("");
     setBusy(true);
 
@@ -127,16 +123,13 @@ export default function ChatPage() {
             }
             break;
           case "final":
-            setMessages((prev) => [
-              ...prev,
-              { role: "assistant", text: event.content, sql: sqls.at(-1) },
-            ]);
+            append({ role: "assistant", text: event.content, sql: sqls.at(-1) });
             break;
           case "blocked":
-            setMessages((prev) => [...prev, { role: "system", text: event.reason }]);
+            append({ role: "system", text: event.reason });
             break;
           case "error":
-            setMessages((prev) => [...prev, { role: "system", text: event.content }]);
+            append({ role: "system", text: event.content });
             break;
         }
       },

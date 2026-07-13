@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LogoMark } from "@/components/Logo";
 import { resetChat } from "@/lib/api";
+import { useSessions } from "@/lib/sessions";
 
 const RAIL_ITEMS = [
   {
@@ -36,13 +37,78 @@ const RAIL_ITEMS = [
   },
 ];
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+function SessionList() {
+  const router = useRouter();
+  const { sessions, activeId, selectSession, deleteSession } = useSessions();
+
+  function open(id: string) {
+    selectSession(id);
+    router.push("/chat");
+  }
+
+  if (sessions.length === 0) {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center gap-3.5 text-center text-dim">
+        <span className="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-[#24374C] text-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+          </svg>
+        </span>
+        <div className="max-w-[150px] text-[12.5px] leading-normal">
+          No sessions yet.
+          <br />
+          Ask your first question.
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-1 flex-col gap-1 overflow-y-auto">
+      {sessions.map((s) => {
+        const active = s.id === activeId;
+        return (
+          <div
+            key={s.id}
+            onClick={() => open(s.id)}
+            className={`group flex cursor-pointer items-center gap-2 rounded-lg px-2.5 py-2 text-[12.5px] transition-colors ${
+              active ? "bg-accent/10 text-ink" : "text-soft hover:bg-card-hover"
+            }`}
+          >
+            <span className="inline-flex flex-shrink-0 text-dim">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <span className="flex-1 truncate">{s.title}</span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteSession(s.id);
+              }}
+              aria-label="Delete session"
+              className="flex-shrink-0 text-dim opacity-0 transition hover:text-[#F26D6D] group-hover:opacity-100"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { newSession } = useSessions();
 
   async function handleNewChat() {
+    newSession();
     await resetChat();
-    window.dispatchEvent(new Event("datagen:new-chat"));
     router.push("/chat");
   }
 
@@ -72,7 +138,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
         {/* nav rail + sessions */}
         <div className="flex min-h-0 flex-1">
-          <div className="flex w-[70px] flex-col items-center gap-1 pt-1.5">
+          <div className="flex w-[70px] flex-shrink-0 flex-col items-center gap-1 pt-1.5">
             {RAIL_ITEMS.map((item) => {
               const active = pathname.startsWith(item.href);
               return (
@@ -90,24 +156,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             })}
           </div>
 
-          {/* session list (placeholder — sessions are in-memory per workspace) */}
-          <div className="flex flex-1 flex-col border-l border-edge p-4 px-3.5">
-            <div className="mb-3.5 font-mono text-[10px] uppercase tracking-[0.14em] text-faint">
+          {/* session list */}
+          <div className="flex min-w-0 flex-1 flex-col border-l border-edge p-4 px-3">
+            <div className="mb-3 px-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-faint">
               Sessions
             </div>
-            <div className="flex flex-1 flex-col items-center justify-center gap-3.5 text-center text-dim">
-              <span className="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-dashed border-[#24374C] text-ghost">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
-                </svg>
-              </span>
-              <div className="max-w-[150px] text-[12.5px] leading-normal">
-                No sessions yet.
-                <br />
-                Ask your first question.
-              </div>
-            </div>
+            <SessionList />
           </div>
         </div>
 
@@ -163,4 +217,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </main>
     </div>
   );
+}
+
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  return <AppShell>{children}</AppShell>;
 }
