@@ -193,7 +193,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
             </svg>
           </Link>
           <a
-            href="https://github.com/juan-elf/Database-AI-agent"
+            href="https://github.com/juan-elf/DataGen-Web"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex text-inherit transition-colors hover:text-accent"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
@@ -101,9 +102,10 @@ const HOW_IT_WORKS = [
 ];
 
 const CONTACT_LINKS = [
-  { label: "GitHub", href: "https://github.com/juan-elf/Database-AI-agent" },
-  { label: "Live Demo", href: "/chat" },
-  { label: "Eval Harness", href: "https://github.com/juan-elf/Database-AI-agent#eval-harness" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/juan-elfinsyah/" },
+  { label: "GitHub", href: "https://github.com/juan-elf" },
+  { label: "Source code", href: "https://github.com/juan-elf/DataGen-Web" },
+  { label: "Email", href: "mailto:juanelfinsyah3@gmail.com" },
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -203,13 +205,27 @@ export default function LandingPage() {
             <div className="text-[32px] font-bold text-accent">
               85.7<span className="text-xl">%</span>
             </div>
-            <div className="mt-1 font-mono text-xs text-dim">Eval accuracy (38 cases)</div>
+            <div className="mt-1 font-mono text-xs text-dim">Eval accuracy · 21 battery cases</div>
           </div>
           <div>
             <div className="text-[32px] font-bold text-accent">4</div>
             <div className="mt-1 font-mono text-xs text-dim">Agent tools</div>
           </div>
         </div>
+      </section>
+
+      {/* ================= PRODUCT SHOT ================= */}
+      <section className="mx-auto max-w-[1180px] px-6 pb-[40px] md:px-12">
+        <Reveal className="overflow-hidden rounded-[16px] border border-edge2 bg-card shadow-[0_0_80px_rgba(34,211,238,0.07)]">
+          <Image
+            src="/product-chat.png"
+            alt="DataGen chat — ask a question in plain language, watch it write and run the SQL, then answer"
+            width={1599}
+            height={760}
+            className="h-auto w-full"
+            priority
+          />
+        </Reveal>
       </section>
 
       {/* ================= PLATFORM ================= */}
@@ -377,40 +393,36 @@ export default function LandingPage() {
             Try the live demo →
           </Link>
           <a
-            href="https://github.com/juan-elf/Database-AI-agent"
+            href="https://github.com/juan-elf/DataGen-Web"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg border border-edge3 px-[30px] py-3.5 text-[15px] font-semibold text-ink transition hover:border-accent hover:text-accent"
           >
-            Read the docs
+            View source
           </a>
         </div>
 
+        <p className="mb-5 text-sm text-muted">
+          Built by <span className="font-semibold text-ink">Juan Elfinsyah</span>
+        </p>
+
         <div className="flex flex-wrap justify-center gap-9 text-sm">
-          {CONTACT_LINKS.map((link) =>
-            link.href.startsWith("/") ? (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-[#8497AB] transition-colors hover:text-accent"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-[#8497AB] transition-colors hover:text-accent"
-              >
-                {link.label}
-              </a>
-            ),
-          )}
+          {CONTACT_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="text-[#8497AB] transition-colors hover:text-accent"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </section>
 
       <footer className="border-t border-edge px-12 py-8 text-center font-mono text-xs text-faint">
-        © 2026 DataGen. All rights reserved.
+        DataGen · MIT licensed · © 2026 Juan Elfinsyah
       </footer>
     </div>
   );

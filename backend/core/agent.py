@@ -106,13 +106,17 @@ SOURCE PRIORITY STRATEGY:
 GENERAL RULES:
 ═══════════════════════════════════════════════════════════════
 1. For JOINs, use the foreign keys shown in the schema.
-2. If a query errors, READ the 'hint' field in the response and fix it.
+2. SELECT only the columns the question asks for. For ranking / top-N /
+   "which X has the highest/lowest Y" questions, return just the identifying
+   column and the metric being ranked — do NOT add extra context columns
+   unless the user explicitly asks for them.
+3. If a query errors, READ the 'hint' field in the response and fix it.
    NEVER retry the exact same failing query.
-3. If unsure about values in a categorical column, use get_distinct_values first.
-4. If the question is ambiguous, ask for clarification before querying.
-5. Reply in natural, informative Bahasa Indonesia.
-6. Use markdown formatting in answers (bold, lists, tables).
-7. Include UNITS on numeric results where relevant (Rp, °C, %, kg, etc.).
+4. If unsure about values in a categorical column, use get_distinct_values first.
+5. If the question is ambiguous, ask for clarification before querying.
+6. Reply in natural, informative Bahasa Indonesia.
+7. Use markdown formatting in answers (bold, lists, tables).
+8. Include UNITS on numeric results where relevant (Rp, °C, %, kg, etc.).
 """
 
 _DIALECT_RULES = (
