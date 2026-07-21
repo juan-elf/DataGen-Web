@@ -152,6 +152,14 @@ function deleteSession(id: string): void {
   }
 }
 
+/** Wipe all saved transcripts — used when the visitor deletes their workspace,
+ * so the sidebar can't keep showing chats about data that no longer exists. */
+function clearAllSessions(): void {
+  ensureInit();
+  const d = draftSession();
+  setSnapshot({ all: [d], activeId: d.id });
+}
+
 function updateSessionMessages(
   id: string,
   updater: (prev: StoredMessage[]) => StoredMessage[],
@@ -182,6 +190,7 @@ export interface UseSessions {
   newSession: () => void;
   selectSession: (id: string) => void;
   deleteSession: (id: string) => void;
+  clearAllSessions: () => void;
   updateSessionMessages: (
     id: string,
     updater: (prev: StoredMessage[]) => StoredMessage[],
@@ -201,6 +210,7 @@ export function useSessions(): UseSessions {
     newSession,
     selectSession,
     deleteSession,
+    clearAllSessions,
     updateSessionMessages,
   };
 }

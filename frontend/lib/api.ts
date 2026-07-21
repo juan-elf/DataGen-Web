@@ -72,6 +72,38 @@ export async function uploadFile(
   return response.json();
 }
 
+/** Load a bundled demo dataset — lets a visitor try the app without uploading anything. */
+export async function loadSampleData(dataset?: string): Promise<UploadResult> {
+  const qs = dataset ? `?dataset=${encodeURIComponent(dataset)}` : "";
+  const response = await fetch(`${API_URL}/sample${qs}`, {
+    method: "POST",
+    credentials: "include",
+    headers: withWorkspace(),
+  });
+  captureWorkspaceId(response);
+
+  if (!response.ok) {
+    throw new Error(await parseErrorDetail(response));
+  }
+  return response.json();
+}
+
+// ── Workspace ───────────────────────────────────────────────────────────────
+
+/** Drop everything in the caller's workspace, immediately. */
+export async function deleteWorkspace(): Promise<void> {
+  const response = await fetch(`${API_URL}/workspace`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: withWorkspace(),
+  });
+  captureWorkspaceId(response);
+
+  if (!response.ok) {
+    throw new Error(await parseErrorDetail(response));
+  }
+}
+
 // ── Chat ────────────────────────────────────────────────────────────────────
 
 export type ChatEvent =

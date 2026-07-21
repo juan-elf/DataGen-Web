@@ -72,7 +72,9 @@ DataGen/
 │   │   └── cleanup.py       # TTL sweep — drops idle workspace schemas
 │   ├── auth/               # (empty) — reserved for Supabase JWT verification (planned)
 │   ├── api/                 # FastAPI routes
-│   │   ├── health.py, upload.py, chat.py, report.py, analysis.py, admin.py
+│   │   ├── health.py, upload.py, sample.py, chat.py, report.py,
+│   │   └── analysis.py, workspace.py (delete-my-data), admin.py
+│   ├── samples/            # bundled demo dataset for "Try with sample data"
 │   ├── domains/             # domain packs (battery.md, ecommerce.md — from DataGen)
 │   ├── tests/               # DB-free unit tests (guardrails, ingest, context, ratelimit)
 │   ├── main.py, requirements.txt, Dockerfile, .env.example
@@ -135,6 +137,30 @@ Chat **session history** lives entirely client-side (`lib/sessions.tsx`,
 localStorage) — consistent with the browser-local identity model, and requires
 no backend/DB changes. Each session is a saved transcript; the backend keeps
 the live conversation context only for the currently active session.
+
+## Data handling
+
+A public demo asks strangers to hand over a file, so the app is explicit about
+what happens to it — and gives a way to try it without handing over anything:
+
+- **Try without uploading** — `POST /sample` loads a bundled synthetic
+  e-commerce dataset (420 orders) into your workspace through the *same* ingest
+  pipeline as a real upload, so the demo path can't drift from the real one.
+- **Isolation** — data lands in a Postgres schema only your session can query
+  (see "Workspace identity" above).
+- **Read-only analysis** — the agent's SQL tool is whitelist/blacklist validated
+  and runs on a read-only session; it cannot write to your tables.
+- **Automatic expiry** — idle workspaces are dropped after `WORKSPACE_TTL_DAYS`
+  (default 7) by the cleanup sweep.
+- **Immediate deletion** — `DELETE /workspace` drops the caller's schema and
+  registry row on demand ("Delete my data" in the sidebar). There is no
+  workspace-id parameter: the schema dropped is always derived from the
+  caller's own signed token, so it can't be pointed at someone else's data.
+- **What leaves the system** — answering a question sends your table structure
+  and small result excerpts to the LLM provider (OpenRouter). The UI says this
+  plainly rather than implying the data never leaves; if you run this yourself,
+  check your provider's data-retention setting, since some free-tier models may
+  log or train on inputs.
 
 ## Getting started
 

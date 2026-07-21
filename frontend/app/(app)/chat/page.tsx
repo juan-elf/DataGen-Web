@@ -4,18 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { LogoMark } from "@/components/Logo";
-import { sendChatMessage, type ChatEvent } from "@/lib/api";
+import { loadSampleData, sendChatMessage, type ChatEvent } from "@/lib/api";
 import { useSessions, type StoredMessage as Message } from "@/lib/sessions";
-
-const CATEGORIES = ["Trending", "Schema", "Aggregations", "Anomalies", "Time-series", "Web context"];
-
-const EXAMPLE_QUESTIONS = [
-  "Which battery cells are closest to end-of-life?",
-  "What is the average state-of-health by cycle count?",
-  "Show total revenue by product category last quarter.",
-  "Are there anomalies in the temperature readings this month?",
-  "Is our 85% average SOH normal for Li-ion cells?",
-];
 
 const DOMAINS = [
   { value: "", label: "No Datagen Skill" },
@@ -89,9 +79,25 @@ export default function ChatPage() {
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [activeTool, setActiveTool] = useState<string | null>(null);
-  const [activeCat, setActiveCat] = useState("Trending");
   const [domain, setDomain] = useState("");
+  const [sampleBusy, setSampleBusy] = useState(false);
+  const [sampleMsg, setSampleMsg] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  async function handleSample() {
+    setSampleBusy(true);
+    setSampleMsg(null);
+    try {
+      const res = await loadSampleData();
+      setSampleMsg(
+        `✅ Loaded ${res.rows.toLocaleString()} rows into "${res.table}" — ask away.`,
+      );
+    } catch (err) {
+      setSampleMsg(err instanceof Error ? err.message : String(err));
+    } finally {
+      setSampleBusy(false);
+    }
+  }
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
@@ -285,48 +291,22 @@ export default function ChatPage() {
                   </svg>
                   Upload data
                 </Link>
-              </div>
-            </div>
-
-            {/* category chips */}
-            <div className="mb-7 flex flex-wrap justify-center gap-2.5">
-              {CATEGORIES.map((cat) => {
-                const active = cat === activeCat;
-                return (
-                  <button
-                    key={cat}
-                    onClick={() => setActiveCat(cat)}
-                    className={`cursor-pointer rounded-[20px] border px-[15px] py-2 text-[13px] transition ${
-                      active
-                        ? "border-accent bg-accent/10 text-ink"
-                        : "border-edge2 bg-transparent text-[#8FA3B5] hover:border-accent hover:text-ink"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* example questions */}
-            <div className="mb-10 flex flex-col overflow-hidden rounded-[14px] border border-edge2 bg-card">
-              {EXAMPLE_QUESTIONS.map((q, i) => (
                 <button
-                  key={q}
-                  onClick={() => setInput(q)}
-                  className={`flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-card-hover ${
-                    i === 0 ? "" : "border-t border-divider"
-                  }`}
+                  onClick={handleSample}
+                  disabled={busy || sampleBusy}
+                  className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/5 px-[11px] py-1.5 text-[12.5px] text-accent transition hover:border-accent hover:bg-accent/10 disabled:cursor-default disabled:opacity-40"
                 >
-                  <span className="text-[14.5px] text-soft">{q}</span>
-                  <span className="inline-flex flex-shrink-0 text-ghost">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17L17 7M8 7h9v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor" />
+                  </svg>
+                  {sampleBusy ? "Loading sample…" : "Load sample data"}
                 </button>
-              ))}
+              </div>
+              {sampleMsg && (
+                <p className="mt-2.5 text-[12.5px] text-muted">{sampleMsg}</p>
+              )}
             </div>
+
           </div>
         </div>
       )}

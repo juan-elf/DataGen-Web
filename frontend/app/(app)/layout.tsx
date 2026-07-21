@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LogoMark } from "@/components/Logo";
-import { resetChat } from "@/lib/api";
+import { deleteWorkspace, resetChat } from "@/lib/api";
 import { useSessions } from "@/lib/sessions";
 
 const RAIL_ITEMS = [
@@ -104,12 +105,34 @@ function SessionList() {
 function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { newSession } = useSessions();
+  const { newSession, clearAllSessions } = useSessions();
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function handleNewChat() {
     newSession();
     await resetChat();
     router.push("/chat");
+  }
+
+  async function handleDeleteData() {
+    // Two-step confirm — this is irreversible and drops the user's whole schema.
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      return;
+    }
+    setDeleting(true);
+    try {
+      await deleteWorkspace();
+      // Transcripts reference tables that no longer exist — clear them too.
+      clearAllSessions();
+      router.push("/upload");
+    } catch {
+      /* surfaced by the button returning to its idle label */
+    } finally {
+      setDeleting(false);
+      setConfirmDelete(false);
+    }
   }
 
   return (
@@ -184,6 +207,24 @@ function AppShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </Link>
+
+        {/* Real, immediate control over your data — not just the 7-day TTL promise. */}
+        <button
+          onClick={handleDeleteData}
+          onBlur={() => setConfirmDelete(false)}
+          disabled={deleting}
+          className={`mx-3.5 mb-1 cursor-pointer rounded-[10px] border px-3.5 py-2 text-[11.5px] font-medium transition disabled:opacity-50 ${
+            confirmDelete
+              ? "border-[#F26D6D] bg-[#F26D6D]/10 text-[#F58C8C]"
+              : "border-edge2 bg-transparent text-dim hover:border-[#F26D6D]/50 hover:text-[#F58C8C]"
+          }`}
+        >
+          {deleting
+            ? "Deleting…"
+            : confirmDelete
+              ? "Click again to permanently delete"
+              : "Delete my data"}
+        </button>
 
         {/* footer */}
         <div className="flex items-center justify-around border-t border-edge px-[18px] pb-4 pt-3 text-faint">
