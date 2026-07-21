@@ -1,0 +1,421 @@
+order_id,order_date,customer_id,region,category,product,quantity,unit_price,total_amount,payment_method
+10420,2025-01-22,CUST-033,Medan,Sports,Resistance Band,3,144000,432000,Bank Transfer
+10390,2025-01-23,CUST-051,Surabaya,Electronics,Smart Watch,2,1164000,2328000,COD
+10211,2025-01-24,CUST-057,Bandung,Home,Table Lamp,1,369000,369000,E-Wallet
+10030,2025-02-01,CUST-017,Jakarta,Home,Ceramic Mug Set,1,174000,174000,Credit Card
+10404,2025-02-02,CUST-040,Jakarta,Electronics,Smart Watch,1,1348000,1348000,E-Wallet
+10401,2025-02-07,CUST-010,Makassar,Electronics,Wireless Earbuds,3,465000,1395000,Credit Card
+10395,2025-02-15,CUST-033,Jakarta,Electronics,Smart Watch,1,1130000,1130000,Credit Card
+10106,2025-02-18,CUST-044,Surabaya,Sports,Resistance Band,1,146000,146000,COD
+10085,2025-02-23,CUST-018,Surabaya,Electronics,Wireless Earbuds,5,465000,2325000,Bank Transfer
+10203,2025-02-28,CUST-027,Jakarta,Beauty,Face Serum,1,261000,261000,COD
+10171,2025-03-05,CUST-056,Surabaya,Home,Cotton Bedsheet,1,549000,549000,E-Wallet
+10369,2025-03-07,CUST-031,Makassar,Beauty,Lip Balm,2,59000,118000,Credit Card
+10170,2025-03-11,CUST-026,Makassar,Electronics,Wireless Earbuds,1,432000,432000,E-Wallet
+10006,2025-03-12,CUST-056,Jakarta,Electronics,Bluetooth Speaker,5,728000,3640000,E-Wallet
+10136,2025-03-12,CUST-014,Surabaya,Fashion,Denim Jacket,1,383000,383000,E-Wallet
+10297,2025-03-12,CUST-011,Bandung,Home,Storage Box,1,103000,103000,
+10419,2025-03-13,CUST-043,Surabaya,Home,Ceramic Mug Set,2,183000,366000,COD
+10195,2025-03-14,CUST-007,Bandung,Fashion,Leather Belt,1,189000,189000,E-Wallet
+10024,2025-03-16,CUST-055,Jakarta,Beauty,Face Serum,4,287000,1148000,COD
+10335,2025-03-16,CUST-002,Bandung,Beauty,Hair Oil,3,174000,522000,E-Wallet
+10412,2025-03-16,CUST-030,Bandung,Electronics,Power Bank,1,303000,303000,Credit Card
+10356,2025-03-18,CUST-060,Surabaya,Fashion,Running Shoes,1,758000,758000,E-Wallet
+10027,2025-03-21,CUST-055,Jakarta,Home,Table Lamp,1,340000,340000,Bank Transfer
+10340,2025-03-21,CUST-011,Jakarta,Beauty,Lip Balm,2,71000,142000,E-Wallet
+10234,2025-03-23,CUST-032,Jakarta,Beauty,Sunscreen SPF50,2,146000,292000,COD
+10373,2025-03-26,CUST-057,Surabaya,Home,Storage Box,1,101000,101000,Bank Transfer
+10276,2025-03-27,CUST-007,Surabaya,Electronics,Wireless Earbuds,1,435000,435000,Bank Transfer
+10247,2025-03-28,CUST-040,Surabaya,Electronics,Smart Watch,1,1218000,1218000,COD
+10303,2025-03-28,CUST-041,Surabaya,Home,Table Lamp,1,355000,355000,COD
+10020,2025-03-29,CUST-060,Medan,Electronics,Power Bank,1,296000,296000,Bank Transfer
+10083,2025-03-30,CUST-059,Jakarta,Electronics,Bluetooth Speaker,2,724000,1448000,E-Wallet
+10138,2025-03-30,CUST-005,Medan,Beauty,Face Serum,1,262000,262000,COD
+10124,2025-03-31,CUST-041,Surabaya,Electronics,Smart Watch,1,1193000,1193000,COD
+10065,2025-04-02,CUST-055,Surabaya,Home,Table Lamp,1,358000,358000,Credit Card
+10365,2025-04-03,CUST-054,Surabaya,Home,Table Lamp,5,348000,1740000,Credit Card
+10252,2025-04-06,CUST-007,Medan,Sports,Water Bottle,2,95000,190000,Bank Transfer
+10311,2025-04-06,CUST-021,Bandung,Electronics,Smart Watch,5,1163000,5815000,Credit Card
+10358,2025-04-08,CUST-011,Surabaya,Sports,Resistance Band,1,131000,131000,COD
+10366,2025-04-08,CUST-059,Medan,Home,Cotton Bedsheet,3,522000,1566000,COD
+10140,2025-04-09,CUST-006,Bandung,Sports,Dumbbell 5kg,1,421000,421000,E-Wallet
+10261,2025-04-09,CUST-027,Bandung,Home,Cotton Bedsheet,3,469000,1407000,Bank Transfer
+10034,2025-04-11,CUST-009,Surabaya,Fashion,Cotton T-Shirt,1,124000,124000,COD
+10048,2025-04-11,CUST-013,Jakarta,Beauty,Sunscreen SPF50,2,140000,280000,COD
+10133,2025-04-11,CUST-024,Jakarta,Home,Storage Box,1,91000,91000,Credit Card
+10117,2025-04-15,CUST-008,Makassar,Home,Cotton Bedsheet,1,496000,496000,Credit Card
+10004,2025-04-16,CUST-052,Jakarta,Fashion,Cotton T-Shirt,3,131000,393000,Credit Card
+10288,2025-04-16,CUST-029,Jakarta,Sports,Dumbbell 5kg,1,472000,472000,Credit Card
+10332,2025-04-16,CUST-015,Jakarta,Sports,Yoga Mat,1,293000,293000,E-Wallet
+10302,2025-04-17,CUST-049,Medan,Fashion,Cotton T-Shirt,1,136000,136000,Bank Transfer
+10164,2025-04-21,CUST-041,Medan,Fashion,Cotton T-Shirt,1,122000,122000,Credit Card
+10367,2025-04-21,CUST-007,Medan,Electronics,Wireless Earbuds,4,455000,1820000,E-Wallet
+10280,2025-04-22,CUST-039,Bandung,Home,Storage Box,2,97000,194000,Credit Card
+10416,2025-04-22,CUST-041,Makassar,Sports,Dumbbell 5kg,1,417000,417000,E-Wallet
+10364,2025-04-25,CUST-014,Medan,Sports,Dumbbell 5kg,4,401000,1604000,COD
+10017,2025-04-29,CUST-028,Makassar,Fashion,Running Shoes,1,805000,805000,Bank Transfer
+10185,2025-04-29,CUST-033,Makassar,Sports,Dumbbell 5kg,2,398000,796000,Credit Card
+10393,2025-04-29,CUST-020,Makassar,Fashion,Cotton T-Shirt,1,137000,137000,E-Wallet
+10328,2025-05-02,CUST-030,Jakarta,Sports,Yoga Mat,1,256000,256000,E-Wallet
+10371,2025-05-02,CUST-047,Bandung,Beauty,Hair Oil,2,171000,342000,Bank Transfer
+10055,2025-05-03,CUST-027,Jakarta,Electronics,Smart Watch,2,1141000,2282000,Credit Card
+10010,2025-05-04,CUST-038,Bandung,Sports,Water Bottle,2,87000,174000,Bank Transfer
+10111,2025-05-04,CUST-024,Jakarta,Beauty,Hair Oil,4,188000,752000,E-Wallet
+10389,2025-05-06,CUST-041,Makassar,Beauty,Sunscreen SPF50,2,148000,296000,Credit Card
+10199,2025-05-08,CUST-011,Bandung,Beauty,Sunscreen SPF50,1,152000,152000,E-Wallet
+10382,2025-05-08,CUST-039,Bandung,Sports,Yoga Mat,3,291000,873000,Bank Transfer
+10078,2025-05-09,CUST-036,Surabaya,Sports,Water Bottle,1,84000,84000,Bank Transfer
+10361,2025-05-09,CUST-035,Bandung,Home,Ceramic Mug Set,1,179000,179000,Bank Transfer
+10130,2025-05-10,CUST-008,Surabaya,Fashion,Denim Jacket,1,403000,403000,COD
+10259,2025-05-10,CUST-007,Jakarta,Home,Table Lamp,2,327000,654000,COD
+10007,2025-05-14,CUST-005,Surabaya,Fashion,Cotton T-Shirt,2,133000,266000,Bank Transfer
+10008,2025-05-14,CUST-050,Jakarta,Fashion,Running Shoes,2,801000,1602000,E-Wallet
+10290,2025-05-15,CUST-037,Jakarta,Electronics,Smart Watch,3,1326000,3978000,Bank Transfer
+10188,2025-05-17,CUST-053,Medan,Home,Cotton Bedsheet,3,526000,1578000,E-Wallet
+10344,2025-05-19,CUST-034,Bandung,Electronics,Wireless Earbuds,1,424000,424000,Bank Transfer
+10143,2025-05-20,CUST-038,Bandung,Sports,Resistance Band,1,146000,146000,E-Wallet
+10254,2025-05-20,CUST-049,Medan,Sports,Yoga Mat,4,279000,1116000,Credit Card
+10318,2025-05-20,CUST-048,Surabaya,Beauty,Face Serum,2,286000,572000,Bank Transfer
+10060,2025-05-21,CUST-049,Medan,Electronics,Bluetooth Speaker,1,656000,656000,COD
+10258,2025-05-23,CUST-052,Jakarta,Home,Storage Box,1,97000,97000,E-Wallet
+10418,2025-05-24,CUST-013,Surabaya,Beauty,Hair Oil,1,189000,189000,COD
+10074,2025-05-25,CUST-034,Surabaya,Sports,Water Bottle,2,97000,194000,Bank Transfer
+10041,2025-05-26,CUST-042,Bandung,Fashion,Denim Jacket,4,381000,1524000,E-Wallet
+10090,2025-05-30,CUST-008,Jakarta,Home,Cotton Bedsheet,1,540000,540000,Bank Transfer
+10191,2025-05-30,CUST-056,Jakarta,Home,Cotton Bedsheet,3,501000,1503000,E-Wallet
+10279,2025-05-30,CUST-035,Jakarta,Sports,Yoga Mat,2,291000,582000,COD
+10056,2025-05-31,CUST-025,Bandung,Fashion,Denim Jacket,3,420000,1260000,E-Wallet
+10037,2025-06-01,CUST-056,Bandung,Electronics,Wireless Earbuds,1,455000,455000,Bank Transfer
+10253,2025-06-01,CUST-044,Makassar,Beauty,Hair Oil,1,193000,193000,Credit Card
+10025,2025-06-02,CUST-025,Jakarta,Fashion,Denim Jacket,1,359000,359000,COD
+10330,2025-06-03,CUST-023,Bandung,Sports,Dumbbell 5kg,1,408000,408000,E-Wallet
+10336,2025-06-03,CUST-040,Surabaya,Electronics,Bluetooth Speaker,1,632000,632000,E-Wallet
+10003,2025-06-05,CUST-028,Jakarta,Home,Ceramic Mug Set,2,172000,344000,E-Wallet
+10040,2025-06-05,CUST-056,Jakarta,Sports,Resistance Band,1,154000,154000,
+10141,2025-06-05,CUST-033,Jakarta,Sports,Yoga Mat,1,253000,253000,E-Wallet
+10286,2025-06-06,CUST-032,Bandung,Fashion,Leather Belt,2,221000,442000,Credit Card
+10320,2025-06-06,CUST-030,Medan,Fashion,Denim Jacket,4,364000,1456000,E-Wallet
+10348,2025-06-06,CUST-019,Jakarta,Home,Table Lamp,1,355000,355000,COD
+10154,2025-06-07,CUST-033,Surabaya,Electronics,Wireless Earbuds,1,475000,475000,Credit Card
+10317,2025-06-07,CUST-003,Bandung,Fashion,Denim Jacket,3,360000,1080000,Bank Transfer
+10096,2025-06-09,CUST-059,Medan,Sports,Yoga Mat,1,273000,273000,Bank Transfer
+10157,2025-06-09,CUST-044,Makassar,Electronics,Power Bank,3,300000,900000,COD
+10016,2025-06-11,CUST-005,Makassar,Electronics,Wireless Earbuds,1,448000,448000,Bank Transfer
+10166,2025-06-12,CUST-034,Bandung,Fashion,Denim Jacket,2,387000,774000,Credit Card
+10210,2025-06-12,CUST-027,Jakarta,Home,Table Lamp,2,309000,618000,Bank Transfer
+10231,2025-06-12,CUST-056,Jakarta,Electronics,Wireless Earbuds,1,465000,465000,COD
+10050,2025-06-13,CUST-057,Jakarta,Home,Ceramic Mug Set,3,198000,594000,Bank Transfer
+10061,2025-06-15,CUST-023,Jakarta,Electronics,Wireless Earbuds,2,409000,818000,Credit Card
+10299,2025-06-15,CUST-047,Surabaya,Fashion,Running Shoes,1,768000,768000,Credit Card
+10237,2025-06-16,CUST-006,Bandung,Fashion,Denim Jacket,4,426000,1704000,Credit Card
+10110,2025-06-17,CUST-056,Jakarta,Sports,Resistance Band,4,139000,556000,Credit Card
+10218,2025-06-18,CUST-047,Surabaya,Electronics,Bluetooth Speaker,4,653000,2612000,E-Wallet
+10243,2025-06-18,CUST-015,Jakarta,Beauty,Hair Oil,1,167000,167000,COD
+10273,2025-06-18,CUST-050,Surabaya,Fashion,Running Shoes,1,733000,733000,Bank Transfer
+10327,2025-06-18,CUST-021,Bandung,Fashion,Leather Belt,2,219000,438000,Bank Transfer
+10331,2025-06-18,CUST-036,Surabaya,Beauty,Face Serum,4,283000,1132000,COD
+10354,2025-06-18,CUST-047,Jakarta,Electronics,Bluetooth Speaker,1,663000,663000,Credit Card
+10250,2025-06-20,CUST-016,Makassar,Fashion,Cotton T-Shirt,4,127000,508000,Credit Card
+10238,2025-06-21,CUST-049,Surabaya,Home,Ceramic Mug Set,3,173000,519000,Bank Transfer
+10287,2025-06-21,CUST-049,Surabaya,Home,Cotton Bedsheet,2,546000,1092000,COD
+10033,2025-06-22,CUST-017,Bandung,Home,Cotton Bedsheet,1,533000,533000,Credit Card
+10058,2025-06-22,CUST-026,Surabaya,Fashion,Leather Belt,1,217000,217000,Bank Transfer
+10135,2025-06-22,CUST-044,Surabaya,Sports,Yoga Mat,1,253000,253000,E-Wallet
+10263,2025-06-23,CUST-047,Surabaya,Fashion,Denim Jacket,1,434000,434000,Bank Transfer
+10399,2025-06-25,CUST-017,Medan,Sports,Resistance Band,1,136000,136000,E-Wallet
+10026,2025-06-26,CUST-004,Surabaya,Home,Storage Box,1,91000,91000,E-Wallet
+10075,2025-06-29,CUST-018,Jakarta,Fashion,Cotton T-Shirt,1,129000,129000,E-Wallet
+10385,2025-06-29,CUST-059,Jakarta,Fashion,Cotton T-Shirt,2,130000,260000,E-Wallet
+10255,2025-06-30,CUST-025,Surabaya,Home,Storage Box,2,95000,190000,Credit Card
+10357,2025-06-30,CUST-010,Jakarta,Electronics,Power Bank,2,341000,682000,
+10363,2025-06-30,CUST-052,Surabaya,Fashion,Denim Jacket,1,430000,430000,Bank Transfer
+10236,2025-07-01,CUST-027,Bandung,Home,Storage Box,4,96000,384000,Bank Transfer
+10398,2025-07-01,CUST-027,Medan,Home,Cotton Bedsheet,2,540000,1080000,Credit Card
+10152,2025-07-03,CUST-054,Makassar,Fashion,Cotton T-Shirt,3,133000,399000,Credit Card
+10313,2025-07-03,CUST-045,Jakarta,Sports,Dumbbell 5kg,1,447000,447000,E-Wallet
+10282,2025-07-04,CUST-033,Bandung,Electronics,Wireless Earbuds,1,467000,467000,COD
+10312,2025-07-04,CUST-028,Jakarta,Fashion,Running Shoes,1,687000,687000,Credit Card
+10207,2025-07-06,CUST-035,Jakarta,Fashion,Cotton T-Shirt,1,130000,130000,E-Wallet
+10147,2025-07-07,CUST-052,Medan,Fashion,Running Shoes,4,742000,2968000,Credit Card
+10212,2025-07-07,CUST-048,Surabaya,Home,Ceramic Mug Set,2,175000,350000,Bank Transfer
+10291,2025-07-07,CUST-058,Surabaya,Home,Cotton Bedsheet,26,567000,14742000,COD
+10347,2025-07-07,CUST-042,Jakarta,Beauty,Hair Oil,3,194000,582000,E-Wallet
+10109,2025-07-08,CUST-024,Bandung,Fashion,Running Shoes,1,755000,755000,Bank Transfer
+10137,2025-07-09,CUST-046,Jakarta,Electronics,Power Bank,1,312000,312000,E-Wallet
+10174,2025-07-09,CUST-045,Bandung,Fashion,Leather Belt,2,206000,412000,E-Wallet
+10321,2025-07-09,CUST-051,Jakarta,Home,Ceramic Mug Set,1,177000,177000,COD
+10265,2025-07-11,CUST-045,Jakarta,Sports,Dumbbell 5kg,1,438000,438000,COD
+10381,2025-07-11,CUST-046,Makassar,Electronics,Bluetooth Speaker,3,647000,1941000,Bank Transfer
+10070,2025-07-12,CUST-013,Jakarta,Beauty,Lip Balm,2,65000,130000,COD
+10355,2025-07-12,CUST-042,Jakarta,Beauty,Hair Oil,2,175000,350000,Bank Transfer
+10370,2025-07-12,CUST-045,Surabaya,Sports,Water Bottle,1,88000,88000,Bank Transfer
+10376,2025-07-13,CUST-019,Jakarta,Sports,Water Bottle,2,92000,184000,Bank Transfer
+10384,2025-07-13,CUST-033,Jakarta,Home,Storage Box,3,98000,294000,Bank Transfer
+10066,2025-07-14,CUST-001,Medan,Fashion,Cotton T-Shirt,1,132000,132000,Credit Card
+10087,2025-07-14,CUST-045,Bandung,Fashion,Denim Jacket,3,385000,1155000,COD
+10095,2025-07-14,CUST-013,Makassar,Home,Storage Box,1,91000,91000,COD
+10230,2025-07-14,CUST-040,Surabaya,Electronics,Wireless Earbuds,1,464000,464000,Credit Card
+10274,2025-07-14,CUST-006,Jakarta,Electronics,Wireless Earbuds,1,487000,487000,Bank Transfer
+10281,2025-07-14,CUST-020,Makassar,Sports,Dumbbell 5kg,3,447000,1341000,Bank Transfer
+10275,2025-07-15,CUST-007,Bandung,Fashion,Running Shoes,2,727000,1454000,E-Wallet
+10129,2025-07-16,CUST-019,Surabaya,Home,Storage Box,3,99000,297000,Bank Transfer
+10145,2025-07-16,CUST-054,Jakarta,Electronics,Power Bank,1,291000,291000,Credit Card
+10260,2025-07-18,CUST-036,Bandung,Electronics,Smart Watch,1,1232000,1232000,Credit Card
+10044,2025-07-19,CUST-008,Surabaya,Electronics,Bluetooth Speaker,2,702000,1404000,E-Wallet
+10267,2025-07-19,CUST-044,Surabaya,Beauty,Sunscreen SPF50,2,150000,300000,
+10322,2025-07-20,CUST-051,Jakarta,Beauty,Sunscreen SPF50,2,150000,300000,
+10360,2025-07-21,CUST-030,Jakarta,Fashion,Running Shoes,1,714000,714000,Credit Card
+10227,2025-07-22,CUST-025,Jakarta,Beauty,Hair Oil,3,192000,576000,Bank Transfer
+10396,2025-07-22,CUST-007,Surabaya,Home,Ceramic Mug Set,2,168000,336000,
+10241,2025-07-23,CUST-057,Bandung,Home,Cotton Bedsheet,1,505000,505000,COD
+10012,2025-07-24,CUST-056,Makassar,Home,Storage Box,2,103000,206000,Credit Card
+10352,2025-07-25,CUST-025,Jakarta,Sports,Dumbbell 5kg,3,429000,1287000,COD
+10115,2025-07-26,CUST-057,Bandung,Fashion,Leather Belt,2,219000,438000,COD
+10167,2025-07-26,CUST-002,Jakarta,Fashion,Leather Belt,5,199000,995000,Bank Transfer
+10009,2025-07-29,CUST-057,Makassar,Electronics,Bluetooth Speaker,1,679000,679000,E-Wallet
+10028,2025-07-29,CUST-006,Bandung,Beauty,Sunscreen SPF50,2,135000,270000,E-Wallet
+10294,2025-07-29,CUST-038,Jakarta,Sports,Water Bottle,1,88000,88000,Credit Card
+10081,2025-07-31,CUST-046,Jakarta,Home,Storage Box,1,89000,89000,Credit Card
+10098,2025-07-31,CUST-017,Jakarta,Home,Table Lamp,1,359000,359000,Credit Card
+10323,2025-07-31,CUST-001,Makassar,Electronics,Bluetooth Speaker,2,706000,1412000,
+10161,2025-08-01,CUST-024,Jakarta,Fashion,Cotton T-Shirt,1,141000,141000,Credit Card
+10213,2025-08-02,CUST-032,Jakarta,Sports,Yoga Mat,5,269000,1345000,E-Wallet
+10221,2025-08-02,CUST-053,Jakarta,Home,Storage Box,2,100000,200000,Credit Card
+10285,2025-08-02,CUST-051,Surabaya,Sports,Resistance Band,1,146000,146000,E-Wallet
+10319,2025-08-02,CUST-008,Bandung,Sports,Water Bottle,3,90000,270000,Bank Transfer
+10283,2025-08-03,CUST-009,Jakarta,Fashion,Running Shoes,2,748000,1496000,Credit Card
+10379,2025-08-04,CUST-020,Surabaya,Fashion,Cotton T-Shirt,1,121000,121000,COD
+10126,2025-08-05,CUST-027,Surabaya,Beauty,Hair Oil,1,176000,176000,E-Wallet
+10067,2025-08-06,CUST-047,Bandung,Fashion,Leather Belt,2,207000,414000,COD
+10394,2025-08-06,CUST-023,Surabaya,Home,Table Lamp,1,367000,367000,COD
+10172,2025-08-07,CUST-012,Bandung,Fashion,Leather Belt,3,205000,615000,E-Wallet
+10232,2025-08-07,CUST-015,Medan,Home,Ceramic Mug Set,1,203000,203000,E-Wallet
+10289,2025-08-07,CUST-045,Jakarta,Beauty,Sunscreen SPF50,1,156000,156000,COD
+10047,2025-08-08,CUST-048,Jakarta,Home,Storage Box,3,103000,309000,E-Wallet
+10372,2025-08-08,CUST-056,Jakarta,Beauty,Hair Oil,2,187000,374000,Bank Transfer
+10101,2025-08-09,CUST-019,Jakarta,Home,Ceramic Mug Set,1,195000,195000,Bank Transfer
+10351,2025-08-09,CUST-051,Jakarta,Electronics,Smart Watch,2,1212000,2424000,
+10160,2025-08-10,CUST-053,Bandung,Fashion,Leather Belt,1,227000,227000,Credit Card
+10163,2025-08-10,CUST-010,Bandung,Electronics,Wireless Earbuds,1,424000,424000,COD
+10316,2025-08-11,CUST-011,Jakarta,Fashion,Leather Belt,3,196000,588000,Credit Card
+10105,2025-08-12,CUST-025,Surabaya,Fashion,Leather Belt,3,193000,579000,E-Wallet
+10123,2025-08-12,CUST-028,Surabaya,Beauty,Face Serum,5,283000,1415000,COD
+10264,2025-08-12,CUST-040,Jakarta,Electronics,Wireless Earbuds,4,434000,1736000,COD
+10063,2025-08-14,CUST-048,Surabaya,Electronics,Bluetooth Speaker,1,694000,694000,Bank Transfer
+10068,2025-08-14,CUST-060,Jakarta,Sports,Water Bottle,1,84000,84000,Bank Transfer
+10183,2025-08-14,CUST-020,Bandung,Beauty,Sunscreen SPF50,2,136000,272000,COD
+10387,2025-08-14,CUST-040,Jakarta,Electronics,Wireless Earbuds,3,457000,1371000,Credit Card
+10086,2025-08-15,CUST-041,Medan,Home,Cotton Bedsheet,1,528000,528000,COD
+10378,2025-08-16,CUST-017,Surabaya,Electronics,Smart Watch,2,1127000,2254000,E-Wallet
+10239,2025-08-17,CUST-014,Makassar,Beauty,Lip Balm,1,70000,70000,Credit Card
+10190,2025-08-18,CUST-004,Jakarta,Sports,Resistance Band,1,132000,132000,COD
+10408,2025-08-18,CUST-042,Jakarta,Fashion,Leather Belt,1,191000,191000,Bank Transfer
+10410,2025-08-18,CUST-058,Makassar,Home,Storage Box,1,101000,101000,Bank Transfer
+10293,2025-08-20,CUST-005,Surabaya,Home,Cotton Bedsheet,2,507000,1014000,Credit Card
+10097,2025-08-21,CUST-007,Bandung,Electronics,Bluetooth Speaker,25,730000,18250000,Bank Transfer
+10296,2025-08-21,CUST-037,Medan,Fashion,Cotton T-Shirt,1,131000,131000,Credit Card
+10256,2025-08-22,CUST-005,Jakarta,Beauty,Face Serum,1,250000,250000,COD
+10337,2025-08-22,CUST-009,Bandung,Beauty,Hair Oil,1,170000,170000,Bank Transfer
+10148,2025-08-23,CUST-034,Bandung,Electronics,Smart Watch,2,1372000,2744000,E-Wallet
+10204,2025-08-23,CUST-004,Surabaya,Home,Storage Box,3,99000,297000,E-Wallet
+10411,2025-08-23,CUST-032,Jakarta,Fashion,Leather Belt,3,192000,576000,E-Wallet
+10011,2025-08-24,CUST-011,Medan,Electronics,Wireless Earbuds,3,418000,1254000,Credit Card
+10182,2025-08-24,CUST-032,Jakarta,Electronics,Smart Watch,3,1184000,3552000,E-Wallet
+10310,2025-08-24,CUST-041,Bandung,Home,Storage Box,1,93000,93000,E-Wallet
+10186,2025-08-26,CUST-023,Makassar,Fashion,Running Shoes,1,781000,781000,E-Wallet
+10192,2025-08-26,CUST-016,Jakarta,Electronics,Smart Watch,1,1191000,1191000,COD
+10277,2025-08-26,CUST-015,Medan,Home,Cotton Bedsheet,2,567000,1134000,Bank Transfer
+10314,2025-08-27,CUST-050,Medan,Sports,Water Bottle,1,82000,82000,Credit Card
+10184,2025-08-28,CUST-005,Bandung,Sports,Yoga Mat,1,264000,264000,E-Wallet
+10222,2025-08-28,CUST-004,Medan,Home,Cotton Bedsheet,1,526000,526000,Bank Transfer
+10246,2025-08-28,CUST-049,Jakarta,Sports,Yoga Mat,4,284000,1136000,Bank Transfer
+10102,2025-08-29,CUST-056,Bandung,Home,Table Lamp,1,311000,311000,COD
+10023,2025-08-30,CUST-060,Jakarta,Electronics,Smart Watch,1,1187000,1187000,Credit Card
+10341,2025-08-30,CUST-037,Medan,Sports,Yoga Mat,2,299000,598000,E-Wallet
+10112,2025-08-31,CUST-024,Jakarta,Fashion,Cotton T-Shirt,2,137000,274000,Credit Card
+10035,2025-09-03,CUST-045,Makassar,Fashion,Denim Jacket,1,434000,434000,E-Wallet
+10093,2025-09-03,CUST-051,Medan,Fashion,Running Shoes,3,716000,2148000,E-Wallet
+10181,2025-09-03,CUST-060,Surabaya,Fashion,Cotton T-Shirt,3,134000,402000,E-Wallet
+10244,2025-09-03,CUST-047,Surabaya,Beauty,Lip Balm,1,69000,69000,Bank Transfer
+10362,2025-09-03,CUST-060,Bandung,Sports,Resistance Band,4,150000,600000,COD
+10071,2025-09-04,CUST-051,Jakarta,Electronics,Power Bank,2,319000,638000,COD
+10150,2025-09-04,CUST-059,Surabaya,Fashion,Cotton T-Shirt,2,133000,266000,Credit Card
+10272,2025-09-05,CUST-051,Bandung,Home,Storage Box,4,91000,364000,
+10262,2025-09-07,CUST-018,Bandung,Electronics,Power Bank,1,305000,305000,COD
+10223,2025-09-08,CUST-044,Jakarta,Electronics,Bluetooth Speaker,3,672000,2016000,Credit Card
+10233,2025-09-09,CUST-043,Bandung,Sports,Water Bottle,1,95000,95000,E-Wallet
+10326,2025-09-09,CUST-028,Surabaya,Fashion,Leather Belt,1,212000,212000,E-Wallet
+10036,2025-09-10,CUST-060,Medan,Electronics,Smart Watch,1,1216000,1216000,E-Wallet
+10151,2025-09-10,CUST-043,Bandung,Electronics,Bluetooth Speaker,1,701000,701000,Credit Card
+10380,2025-09-10,CUST-019,Jakarta,Electronics,Bluetooth Speaker,2,692000,1384000,Credit Card
+10002,2025-09-11,CUST-002,Surabaya,Electronics,Wireless Earbuds,1,450000,450000,COD
+10019,2025-09-11,CUST-004,Jakarta,Electronics,Smart Watch,1,1301000,1301000,E-Wallet
+10119,2025-09-11,CUST-058,Surabaya,Sports,Dumbbell 5kg,1,399000,399000,Bank Transfer
+10121,2025-09-11,CUST-034,Jakarta,Electronics,Bluetooth Speaker,1,712000,712000,COD
+10200,2025-09-12,CUST-053,Jakarta,Fashion,Leather Belt,2,201000,402000,Credit Card
+10177,2025-09-15,CUST-037,Jakarta,Home,Cotton Bedsheet,1,547000,547000,E-Wallet
+10049,2025-09-16,CUST-013,Surabaya,Sports,Resistance Band,1,148000,148000,COD
+10206,2025-09-16,CUST-020,Surabaya,Electronics,Smart Watch,1,1199000,1199000,COD
+10046,2025-09-17,CUST-051,Surabaya,Fashion,Denim Jacket,1,375000,375000,COD
+10100,2025-09-17,CUST-028,Makassar,Electronics,Bluetooth Speaker,5,713000,3565000,Credit Card
+10116,2025-09-17,CUST-029,Bandung,Beauty,Lip Balm,1,63000,63000,E-Wallet
+10146,2025-09-17,CUST-048,Medan,Fashion,Leather Belt,2,229000,458000,Bank Transfer
+10175,2025-09-17,CUST-024,Bandung,Fashion,Denim Jacket,1,409000,409000,Bank Transfer
+10113,2025-09-18,CUST-005,Surabaya,Beauty,Lip Balm,4,61000,244000,E-Wallet
+10108,2025-09-19,CUST-038,Jakarta,Beauty,Face Serum,1,261000,261000,E-Wallet
+10338,2025-09-20,CUST-023,Bandung,Sports,Yoga Mat,5,290000,1450000,E-Wallet
+10375,2025-09-21,CUST-029,Jakarta,Electronics,Wireless Earbuds,1,448000,448000,E-Wallet
+10391,2025-09-21,CUST-013,Surabaya,Fashion,Leather Belt,1,190000,190000,E-Wallet
+10001,2025-09-22,CUST-007,Surabaya,Electronics,Bluetooth Speaker,1,630000,630000,Credit Card
+10159,2025-09-22,CUST-008,Jakarta,Beauty,Face Serum,2,265000,530000,E-Wallet
+10278,2025-09-22,CUST-029,Surabaya,Fashion,Denim Jacket,2,429000,858000,Bank Transfer
+10092,2025-09-23,CUST-054,Bandung,Electronics,Bluetooth Speaker,1,649000,649000,COD
+10153,2025-09-23,CUST-014,Jakarta,Fashion,Cotton T-Shirt,1,124000,124000,Bank Transfer
+10114,2025-09-24,CUST-032,Jakarta,Electronics,Wireless Earbuds,4,432000,1728000,Bank Transfer
+10178,2025-09-24,CUST-034,Bandung,Electronics,Wireless Earbuds,1,421000,421000,E-Wallet
+10189,2025-09-24,CUST-057,Surabaya,Sports,Resistance Band,2,131000,262000,E-Wallet
+10406,2025-09-24,CUST-055,Jakarta,Sports,Yoga Mat,1,287000,287000,COD
+10089,2025-09-25,CUST-040,Surabaya,Home,Storage Box,1,95000,95000,Credit Card
+10228,2025-09-25,CUST-009,Surabaya,Fashion,Running Shoes,5,733000,3665000,Credit Card
+10251,2025-09-25,CUST-036,Bandung,Sports,Yoga Mat,1,268000,268000,Bank Transfer
+10324,2025-09-25,CUST-016,Bandung,Sports,Water Bottle,1,89000,89000,Bank Transfer
+10386,2025-09-25,CUST-051,Medan,Electronics,Smart Watch,2,1201000,2402000,E-Wallet
+10155,2025-09-26,CUST-012,Medan,Beauty,Sunscreen SPF50,2,138000,276000,Bank Transfer
+10248,2025-09-26,CUST-018,Bandung,Electronics,Power Bank,1,321000,321000,COD
+10045,2025-09-27,CUST-043,Makassar,Fashion,Cotton T-Shirt,2,121000,242000,Bank Transfer
+10052,2025-09-27,CUST-040,Medan,Beauty,Lip Balm,4,70000,280000,COD
+10118,2025-09-27,CUST-009,Medan,Home,Ceramic Mug Set,1,178000,178000,Bank Transfer
+10127,2025-09-27,CUST-006,Medan,Fashion,Running Shoes,2,746000,1492000,Credit Card
+10032,2025-09-28,CUST-008,Medan,Home,Ceramic Mug Set,4,171000,684000,Bank Transfer
+10022,2025-09-29,CUST-052,Medan,Beauty,Face Serum,1,277000,277000,Bank Transfer
+10269,2025-09-29,CUST-046,Bandung,Electronics,Bluetooth Speaker,1,701000,701000,COD
+10013,2025-09-30,CUST-019,Bandung,Home,Cotton Bedsheet,2,503000,1006000,E-Wallet
+10104,2025-09-30,CUST-020,Surabaya,Electronics,Power Bank,4,351000,1404000,E-Wallet
+10082,2025-10-01,CUST-042,Jakarta,Beauty,Sunscreen SPF50,1,150000,150000,Bank Transfer
+10333,2025-10-01,CUST-053,Jakarta,Beauty,Face Serum,2,252000,504000,Bank Transfer
+10072,2025-10-02,CUST-028,Makassar,Fashion,Cotton T-Shirt,1,129000,129000,E-Wallet
+10220,2025-10-02,CUST-009,Bandung,Home,Cotton Bedsheet,1,490000,490000,E-Wallet
+10397,2025-10-02,CUST-045,Jakarta,Fashion,Leather Belt,1,199000,199000,Credit Card
+10076,2025-10-03,CUST-019,Bandung,Electronics,Power Bank,1,288000,288000,Bank Transfer
+10219,2025-10-03,CUST-044,Bandung,Electronics,Wireless Earbuds,1,419000,419000,E-Wallet
+10301,2025-10-03,CUST-015,Bandung,Sports,Resistance Band,2,144000,288000,Credit Card
+10084,2025-10-04,CUST-057,Bandung,Beauty,Hair Oil,1,181000,181000,E-Wallet
+10271,2025-10-04,CUST-043,Jakarta,Sports,Yoga Mat,1,261000,261000,Credit Card
+10417,2025-10-04,CUST-048,Surabaya,Electronics,Smart Watch,1,1330000,1330000,Bank Transfer
+10073,2025-10-05,CUST-021,Jakarta,Electronics,Bluetooth Speaker,1,710000,710000,Bank Transfer
+10300,2025-10-05,CUST-034,Surabaya,Electronics,Power Bank,1,325000,325000,
+10343,2025-10-05,CUST-052,Medan,Fashion,Running Shoes,2,703000,1406000,E-Wallet
+10400,2025-10-05,CUST-045,Makassar,Fashion,Denim Jacket,2,431000,862000,Credit Card
+10091,2025-10-06,CUST-054,Makassar,Fashion,Denim Jacket,2,366000,732000,Credit Card
+10139,2025-10-06,CUST-011,Medan,Fashion,Denim Jacket,1,436000,436000,E-Wallet
+10325,2025-10-06,CUST-045,Medan,Electronics,Smart Watch,3,1254000,3762000,Credit Card
+10018,2025-10-07,CUST-008,Jakarta,Fashion,Cotton T-Shirt,1,129000,129000,Credit Card
+10156,2025-10-08,CUST-029,Surabaya,Electronics,Bluetooth Speaker,2,644000,1288000,COD
+10202,2025-10-08,CUST-050,Medan,Home,Table Lamp,2,355000,710000,Bank Transfer
+10216,2025-10-08,CUST-049,Jakarta,Electronics,Bluetooth Speaker,3,689000,2067000,COD
+10383,2025-10-08,CUST-025,Surabaya,Home,Cotton Bedsheet,1,511000,511000,Bank Transfer
+10142,2025-10-09,CUST-013,Jakarta,Sports,Dumbbell 5kg,1,399000,399000,Credit Card
+10225,2025-10-09,CUST-003,Bandung,Fashion,Denim Jacket,2,405000,810000,Credit Card
+10268,2025-10-09,CUST-045,Jakarta,Beauty,Sunscreen SPF50,1,142000,142000,COD
+10402,2025-10-09,CUST-019,Jakarta,Electronics,Bluetooth Speaker,2,674000,1348000,Bank Transfer
+10043,2025-10-10,CUST-017,Jakarta,Fashion,Denim Jacket,1,405000,405000,Bank Transfer
+10168,2025-10-10,CUST-022,Medan,Home,Cotton Bedsheet,1,504000,504000,COD
+10245,2025-10-10,CUST-059,Medan,Fashion,Running Shoes,2,748000,1496000,Credit Card
+10295,2025-10-10,CUST-026,Jakarta,Fashion,Cotton T-Shirt,3,136000,408000,Bank Transfer
+10128,2025-10-13,CUST-036,Surabaya,Fashion,Running Shoes,2,762000,1524000,COD
+10209,2025-10-13,CUST-009,Jakarta,Electronics,Bluetooth Speaker,4,706000,2824000,Bank Transfer
+10240,2025-10-13,CUST-026,Makassar,Sports,Dumbbell 5kg,2,447000,894000,E-Wallet
+10057,2025-10-14,CUST-052,Surabaya,Sports,Resistance Band,2,151000,302000,Bank Transfer
+10062,2025-10-14,CUST-016,Jakarta,Beauty,Sunscreen SPF50,3,152000,456000,Bank Transfer
+10069,2025-10-14,CUST-021,Jakarta,Home,Storage Box,1,94000,94000,E-Wallet
+10198,2025-10-15,CUST-009,Surabaya,Electronics,Power Bank,1,290000,290000,COD
+10229,2025-10-15,CUST-035,Jakarta,Beauty,Hair Oil,2,179000,358000,COD
+10392,2025-10-15,CUST-016,Jakarta,Home,Ceramic Mug Set,2,189000,378000,E-Wallet
+10015,2025-10-16,CUST-008,Makassar,Home,Ceramic Mug Set,2,184000,368000,E-Wallet
+10196,2025-10-16,CUST-024,Bandung,Fashion,Leather Belt,1,212000,212000,COD
+10197,2025-10-16,CUST-024,Medan,Electronics,Wireless Earbuds,1,413000,413000,E-Wallet
+10242,2025-10-16,CUST-037,Medan,Fashion,Running Shoes,1,737000,737000,Credit Card
+10054,2025-10-17,CUST-019,Jakarta,Home,Table Lamp,1,311000,311000,Credit Card
+10158,2025-10-17,CUST-052,Surabaya,Sports,Resistance Band,4,154000,616000,Credit Card
+10179,2025-10-18,CUST-059,Makassar,Home,Table Lamp,5,325000,1625000,Bank Transfer
+10315,2025-10-18,CUST-046,Makassar,Electronics,Power Bank,1,292000,292000,COD
+10346,2025-10-18,CUST-043,Bandung,Sports,Water Bottle,4,86000,344000,E-Wallet
+10079,2025-10-19,CUST-028,Jakarta,Fashion,Leather Belt,1,213000,213000,Credit Card
+10122,2025-10-19,CUST-040,Jakarta,Fashion,Denim Jacket,1,376000,376000,E-Wallet
+10021,2025-10-20,CUST-023,Bandung,Sports,Dumbbell 5kg,1,443000,443000,Credit Card
+10039,2025-10-20,CUST-007,Bandung,Fashion,Running Shoes,1,793000,793000,COD
+10235,2025-10-20,CUST-012,Surabaya,Fashion,Leather Belt,1,201000,201000,Bank Transfer
+10307,2025-10-20,CUST-032,Surabaya,Sports,Dumbbell 5kg,1,396000,396000,Credit Card
+10305,2025-10-21,CUST-047,Surabaya,Electronics,Wireless Earbuds,1,459000,459000,Credit Card
+10353,2025-10-21,CUST-055,Jakarta,Home,Table Lamp,1,311000,311000,
+10173,2025-10-23,CUST-012,Bandung,Sports,Yoga Mat,1,302000,302000,Credit Card
+10407,2025-10-23,CUST-040,Jakarta,Home,Table Lamp,2,358000,716000,Bank Transfer
+10051,2025-10-24,CUST-055,Jakarta,Home,Storage Box,1,90000,90000,COD
+10249,2025-10-24,CUST-016,Jakarta,Beauty,Face Serum,4,266000,1064000,E-Wallet
+10345,2025-10-24,CUST-021,Jakarta,Fashion,Running Shoes,4,801000,3204000,Bank Transfer
+10088,2025-10-26,CUST-008,Makassar,Home,Storage Box,1,90000,90000,Credit Card
+10405,2025-10-26,CUST-054,Bandung,Electronics,Power Bank,1,317000,317000,COD
+10094,2025-10-27,CUST-043,Bandung,Fashion,Cotton T-Shirt,3,131000,393000,COD
+10217,2025-10-28,CUST-009,Bandung,Fashion,Denim Jacket,1,366000,366000,Credit Card
+10414,2025-10-28,CUST-042,Surabaya,Sports,Water Bottle,3,90000,270000,E-Wallet
+10415,2025-10-28,CUST-039,Bandung,Sports,Resistance Band,1,152000,152000,COD
+10053,2025-10-29,CUST-017,Surabaya,Home,Table Lamp,2,338000,676000,E-Wallet
+10107,2025-10-29,CUST-041,Jakarta,Beauty,Sunscreen SPF50,2,144000,288000,Bank Transfer
+10162,2025-10-30,CUST-054,Bandung,Home,Table Lamp,1,325000,325000,COD
+10165,2025-10-30,CUST-046,Jakarta,Fashion,Denim Jacket,2,404000,808000,E-Wallet
+10374,2025-10-30,CUST-013,Jakarta,Electronics,Power Bank,1,311000,311000,COD
+10131,2025-10-31,CUST-045,Jakarta,Beauty,Face Serum,2,273000,546000,E-Wallet
+10359,2025-10-31,CUST-017,Jakarta,Fashion,Leather Belt,1,226000,226000,Bank Transfer
+10187,2025-11-01,CUST-035,Jakarta,Electronics,Bluetooth Speaker,1,653000,653000,Bank Transfer
+10306,2025-11-01,CUST-013,Surabaya,Home,Cotton Bedsheet,1,531000,531000,Credit Card
+10099,2025-11-02,CUST-057,Surabaya,Sports,Resistance Band,4,148000,592000,Credit Card
+10180,2025-11-02,CUST-055,Makassar,Fashion,Leather Belt,5,223000,1115000,Credit Card
+10349,2025-11-02,CUST-052,Makassar,Sports,Yoga Mat,1,265000,265000,Credit Card
+10304,2025-11-03,CUST-047,Bandung,Electronics,Wireless Earbuds,1,416000,416000,E-Wallet
+10377,2025-11-03,CUST-002,Medan,Home,Table Lamp,1,333000,333000,Credit Card
+10413,2025-11-03,CUST-002,Jakarta,Fashion,Denim Jacket,5,418000,2090000,Credit Card
+10144,2025-11-04,CUST-041,Jakarta,Home,Table Lamp,1,337000,337000,Credit Card
+10193,2025-11-04,CUST-047,Jakarta,Fashion,Running Shoes,3,815000,2445000,COD
+10284,2025-11-05,CUST-036,Bandung,Beauty,Hair Oil,1,189000,189000,COD
+10388,2025-11-05,CUST-009,Makassar,Fashion,Cotton T-Shirt,20,138000,2760000,COD
+10403,2025-11-06,CUST-048,Jakarta,Sports,Water Bottle,3,85000,255000,Credit Card
+10031,2025-11-07,CUST-020,Surabaya,Fashion,Running Shoes,1,756000,756000,Credit Card
+10214,2025-11-07,CUST-030,Makassar,Electronics,Wireless Earbuds,4,435000,1740000,COD
+10368,2025-11-07,CUST-012,Jakarta,Electronics,Power Bank,2,318000,636000,COD
+10134,2025-11-08,CUST-043,Bandung,Electronics,Wireless Earbuds,2,429000,858000,COD
+10215,2025-11-10,CUST-022,Jakarta,Electronics,Power Bank,1,339000,339000,E-Wallet
+10224,2025-11-12,CUST-030,Surabaya,Fashion,Denim Jacket,1,400000,400000,E-Wallet
+10334,2025-11-13,CUST-052,Jakarta,Fashion,Running Shoes,1,802000,802000,COD
+10103,2025-11-15,CUST-043,Jakarta,Electronics,Power Bank,2,317000,634000,E-Wallet
+10339,2025-11-15,CUST-039,Jakarta,Fashion,Leather Belt,1,190000,190000,E-Wallet
+10149,2025-11-17,CUST-041,Surabaya,Fashion,Cotton T-Shirt,2,117000,234000,Credit Card
+10292,2025-11-17,CUST-010,Surabaya,Beauty,Sunscreen SPF50,2,138000,276000,COD
+10132,2025-11-18,CUST-026,Jakarta,Fashion,Running Shoes,3,759000,2277000,Credit Card
+10038,2025-11-19,CUST-057,Bandung,Electronics,Smart Watch,5,1327000,6635000,E-Wallet
+10029,2025-11-21,CUST-043,Surabaya,Electronics,Bluetooth Speaker,1,665000,665000,Credit Card
+10226,2025-11-21,CUST-050,Jakarta,Electronics,Power Bank,1,314000,314000,COD
+10342,2025-11-22,CUST-052,Surabaya,Beauty,Sunscreen SPF50,1,151000,151000,Credit Card
+10350,2025-11-22,CUST-011,Surabaya,Electronics,Wireless Earbuds,1,493000,493000,E-Wallet
+10042,2025-11-23,CUST-017,Jakarta,Electronics,Bluetooth Speaker,1,742000,742000,E-Wallet
+10080,2025-11-26,CUST-016,Jakarta,Electronics,Smart Watch,1,1145000,1145000,Credit Card
+10176,2025-11-27,CUST-050,Surabaya,Electronics,Power Bank,1,292000,292000,Credit Card
+10208,2025-11-28,CUST-006,Jakarta,Sports,Water Bottle,1,97000,97000,E-Wallet
+10309,2025-11-28,CUST-014,Jakarta,Sports,Yoga Mat,2,248000,496000,COD
+10298,2025-11-29,CUST-056,Makassar,Electronics,Smart Watch,3,1200000,3600000,E-Wallet
+10064,2025-12-02,CUST-059,Makassar,Electronics,Wireless Earbuds,4,456000,1824000,Bank Transfer
+10077,2025-12-02,CUST-032,Jakarta,Electronics,Power Bank,1,292000,292000,Credit Card
+10329,2025-12-02,CUST-006,Jakarta,Electronics,Bluetooth Speaker,1,727000,727000,Credit Card
+10257,2025-12-04,CUST-015,Jakarta,Fashion,Cotton T-Shirt,3,127000,381000,COD
+10266,2025-12-04,CUST-021,Jakarta,Fashion,Leather Belt,4,221000,884000,COD
+10005,2025-12-05,CUST-056,Jakarta,Fashion,Cotton T-Shirt,3,132000,396000,Credit Card
+10014,2025-12-05,CUST-041,Bandung,Sports,Yoga Mat,3,263000,789000,E-Wallet
+10409,2025-12-08,CUST-040,Jakarta,Home,Cotton Bedsheet,1,539000,539000,Bank Transfer
+10059,2025-12-09,CUST-006,Surabaya,Home,Storage Box,2,98000,196000,COD
+10169,2025-12-09,CUST-050,Makassar,Fashion,Running Shoes,3,684000,2052000,Bank Transfer
+10201,2025-12-09,CUST-042,Medan,Home,Ceramic Mug Set,2,176000,352000,Bank Transfer
+10120,2025-12-13,CUST-009,Jakarta,Home,Table Lamp,1,364000,364000,Bank Transfer
+10308,2025-12-13,CUST-027,Jakarta,Beauty,Sunscreen SPF50,1,159000,159000,COD
+10270,2025-12-16,CUST-056,Surabaya,Fashion,Leather Belt,2,227000,454000,E-Wallet
+10125,2025-12-19,CUST-051,Surabaya,Home,Storage Box,1,93000,93000,Bank Transfer
+10194,2025-12-21,CUST-033,Bandung,Fashion,Cotton T-Shirt,24,118000,2832000,E-Wallet
+10205,2025-12-24,CUST-059,Bandung,Fashion,Leather Belt,1,196000,196000,E-Wallet

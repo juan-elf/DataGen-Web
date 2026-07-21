@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
-from api import admin, analysis, chat, health, report, upload  # noqa: E402
+from api import admin, analysis, chat, health, report, sample, upload, workspace  # noqa: E402
 from db.context import WORKSPACE_HEADER  # noqa: E402
 from db.registry import ensure_registry_table  # noqa: E402
 
@@ -72,7 +72,9 @@ def on_startup() -> None:
 
 app.include_router(health.router)
 app.include_router(upload.router)
+app.include_router(sample.router)
 app.include_router(chat.router)
 app.include_router(report.router)
 app.include_router(analysis.router)
+app.include_router(workspace.router)
 app.include_router(admin.router)
